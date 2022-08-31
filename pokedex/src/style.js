@@ -16,21 +16,25 @@ export const Header = styled.header`
 
 export const PageTitle = styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
     color: white;
     text-shadow: 2px 2px 4px black;
     background-color: #ff1c1c;
-    padding: 5px 50px;
     letter-spacing: 3px;
     
     img {
         width: 80px;
+        margin-left: 50px;
         cursor: pointer;
+
+        :hover {
+            transform: scale(0.9);
+        }
     }
 
     h1 {
         width: 100%;
+        margin-right: 80px;
         font-size: 2.4rem;
         font-family: 'Pokemon', sans-serif;
         text-align: center;

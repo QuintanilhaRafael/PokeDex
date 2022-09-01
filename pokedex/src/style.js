@@ -21,10 +21,10 @@ export const PageTitle = styled.div`
     text-shadow: 2px 2px 4px black;
     background-color: #ff1c1c;
     letter-spacing: 3px;
+    padding: 10px 50px;
     
     img {
         width: 80px;
-        margin-left: 50px;
         cursor: pointer;
 
         :hover {
@@ -55,13 +55,19 @@ export const PageNav = styled.div`
         font-size: 1.2rem;
         font-weight: 600;
         color: white;
+        background-image: linear-gradient(#fff,#fff);
+        background-size: 0 100%;
+        background-repeat: no-repeat;
+        transition: .3s ease-in-out;
+        padding: 1px;
 
         :hover {
             cursor: pointer;
-            text-decoration: underline;
+            color: black;
+            background-size: 100% 100%;
         }   
-    }
-    
+        
+    }  
 
 
 `

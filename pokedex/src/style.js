@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
 `
 
@@ -70,4 +70,9 @@ export const PageNav = styled.div`
     }  
 
 
+`
+
+export const Main = styled.main`
+    display: flex;
+    flex-direction: column;
 `

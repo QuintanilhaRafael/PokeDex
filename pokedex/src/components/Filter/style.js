@@ -22,13 +22,13 @@ export const Field = styled.div`
     }
     input {
         border: 1px solid #000;
-        padding: 5px;
+        padding: 6px;
         border-radius: 6px;
         width: 100%;
     }
     select {
         border: 1px solid #000;
-        padding: 5px;
+        padding: 6px;
         border-radius: 6px;
         width: 100%;
     }

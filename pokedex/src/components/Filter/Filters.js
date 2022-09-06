@@ -1,12 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useContext } from "react";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { Field, FilterDiv } from "./style";
 
 function Filters() {
 
-  const [nameNumberQuery, setNameNumberQuery] = useState('')
-  const [typeQuery, setTypeQuery] = useState('')
-  const [selected, setSelected] = useState('number')
+  const {nameNumberQuery, setNameNumberQuery, typeQuery, setTypeQuery, selected, setSelected} = useContext(GlobalStateContext)
 
   return (
     <FilterDiv>

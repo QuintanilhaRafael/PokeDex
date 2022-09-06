@@ -1,6 +1,8 @@
 import React from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Filters from "../../components/Filter/Filters";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
 import { Header, Main, PageNav, PageTitle } from "../../style";
@@ -8,6 +10,22 @@ import { Header, Main, PageNav, PageTitle } from "../../style";
 function HomePage() {
 
   const navigate = useNavigate();
+
+  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData } = useContext(GlobalStateContext)
+
+  // RENDER POKEMONS
+
+  const pokemonsList = pokemonsData && pokemonsData
+    .filter(pokemon => {
+      return pokemon.name.toLowerCase().includes(nameNumberQuery.toLowerCase())
+    })
+    .map(pokemon => {
+      return (
+        <div>
+          <span>{pokemon.name}</span>
+        </div>
+      )
+    })
 
   return (
     <div>
@@ -25,7 +43,11 @@ function HomePage() {
       <Main>
 
         <Filters />
-        
+
+        {isLoading && <span>Carregando...</span>}
+        {!isLoading && pokemonsData && pokemonsList}
+        {!isLoading && !pokemonsData && error}
+
       </Main>
 
     </div>

@@ -17,12 +17,37 @@ function HomePage() {
 
   const pokemonsList = pokemonsData && pokemonsData
     .filter(pokemon => {
-      return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase())
+      return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase()) || `${pokemon.data.id}`.includes(nameNumberQuery)
+    })
+    .filter(pokemon => {
+      let pokemonType
+      if (pokemon.data.types[1]) {
+        pokemonType = pokemon.data.types[0].type.name + " | " + pokemon.data.types[1].type.name
+      } else {
+        pokemonType = pokemon.data.types[0].type.name
+      }
+      return pokemonType.includes(typeQuery)
+    })
+    .sort((pokemon1, pokemon2) => {
+      switch (selected) {
+        case 'name':
+          return pokemon1.data.name.localeCompare(pokemon2.data.name)
+        default:
+          return pokemon1.data.id - pokemon2.data.id
+      }
     })
     .map(pokemon => {
+      let pokemonType
+      if (pokemon.data.types[1]) {
+        pokemonType = pokemon.data.types[0].type.name + " | " + pokemon.data.types[1].type.name
+      } else {
+        pokemonType = pokemon.data.types[0].type.name
+      }
       return (
-        <div>
+        <div key={pokemon.data.id}>
           <span>{pokemon.data.name}</span>
+          <span>{pokemon.data.id}</span>
+          <span>{pokemonType}</span>
         </div>
       )
     })

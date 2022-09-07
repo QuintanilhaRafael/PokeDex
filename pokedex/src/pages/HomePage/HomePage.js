@@ -17,12 +17,12 @@ function HomePage() {
 
   const pokemonsList = pokemonsData && pokemonsData
     .filter(pokemon => {
-      return pokemon.name.toLowerCase().includes(nameNumberQuery.toLowerCase())
+      return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase())
     })
     .map(pokemon => {
       return (
         <div>
-          <span>{pokemon.name}</span>
+          <span>{pokemon.data.name}</span>
         </div>
       )
     })

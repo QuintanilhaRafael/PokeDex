@@ -18,7 +18,6 @@ function GlobalState(props) {
     const [pokemonsData, setPokemonsData] = useState([])
     const [isLoading, setIsLoading] = useState(undefined)
     const [error, setError] = useState(undefined)
-    const [pokemonInfo, setPokemonInfo] = useState([])
 
     useEffect(() => {
         getPokemons()
@@ -27,27 +26,23 @@ function GlobalState(props) {
     const getPokemons = () => {
         axios.get(`${BASE_URL}`)
             .then((response) => {
-                setPokemonsData(response.data.results)
+                getPokemonsInfo(response.data.results)
             }).catch((err) => {
                 setError(err)
             })
     }
 
-    const getPokemonsInfo = () => {
+    const getPokemonsInfo = (res) => {
         setIsLoading(true);
-        axios.all(pokemonsData && pokemonsData.map((pokemon) => axios.get(pokemon.url)))
+        axios.all(res.map((pokemon) => axios.get(pokemon.url)))
             .then((response) => {
                 setIsLoading(false)
-                console.log(response)
+                setPokemonsData(response)
             }).catch((err) => {
                 setIsLoading(false)
                 setError(err)
             })
-    }    
-
-    getPokemonsInfo()
-
-
+    }
 
 
     return (

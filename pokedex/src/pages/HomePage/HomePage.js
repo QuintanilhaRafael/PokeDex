@@ -6,6 +6,8 @@ import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
 import { Header, Main, PageNav, PageTitle } from "../../style";
+import Card from './../../components/Card/Card';
+import { CardsSection } from "./style";
 
 function HomePage() {
 
@@ -37,18 +39,8 @@ function HomePage() {
       }
     })
     .map(pokemon => {
-      let pokemonType
-      if (pokemon.data.types[1]) {
-        pokemonType = pokemon.data.types[0].type.name + " | " + pokemon.data.types[1].type.name
-      } else {
-        pokemonType = pokemon.data.types[0].type.name
-      }
       return (
-        <div key={pokemon.data.id}>
-          <span>{pokemon.data.name}</span>
-          <span>{pokemon.data.id}</span>
-          <span>{pokemonType}</span>
-        </div>
+        <Card id={pokemon.data.id} name={pokemon.data.name} img={pokemon.data.sprites.versions['generation-v']['black-white']['animated']['front_default']} types={pokemon.data.types}/>
       )
     })
 
@@ -68,11 +60,11 @@ function HomePage() {
       <Main>
 
         <Filters />
-
+        <CardsSection>
         {isLoading && <span>Carregando...</span>}
         {!isLoading && pokemonsData && pokemonsList}
         {!isLoading && !pokemonsData && error}
-
+        </CardsSection>
       </Main>
 
     </div>

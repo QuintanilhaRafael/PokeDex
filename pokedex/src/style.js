@@ -9,6 +9,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 `
 
+export const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
 export const Header = styled.header`
     display: flex;
     flex-direction: column;
@@ -76,3 +81,5 @@ export const Main = styled.main`
     display: flex;
     flex-direction: column;
 `
+
+

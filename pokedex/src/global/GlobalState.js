@@ -12,6 +12,7 @@ function GlobalState(props) {
     const [nameNumberQuery, setNameNumberQuery] = useState('')
     const [typeQuery, setTypeQuery] = useState('')
     const [selected, setSelected] = useState('number')
+    const [pokedexArray, setPokedexArray] = useState([])
 
     // Requests
 
@@ -36,17 +37,31 @@ function GlobalState(props) {
         setIsLoading(true);
         axios.all(res.map((pokemon) => axios.get(pokemon.url)))
             .then((response) => {
-                setIsLoading(false)
-                setPokemonsData(response)
+                setTimeout(() => {
+                    setIsLoading(false)
+                    setPokemonsData(response)
+                }, 1000)
             }).catch((err) => {
                 setIsLoading(false)
                 setError(err)
             })
     }
 
+    // Buttons
+
+    const addPokedex = (cardId, pokemon) => {
+        const found = pokemonsData.find((pkm) => pkm.data.id === cardId)
+        const newPokemonsData = [...pokemonsData]
+        newPokemonsData.splice(found, 1)
+        setPokemonsData(newPokemonsData)
+        const newPokedexArray = [...pokedexArray]
+        newPokedexArray.push(pokemon)
+        setPokedexArray(newPokedexArray)
+    }
+
 
     return (
-        <GlobalStateContext.Provider value={{ nameNumberQuery, setNameNumberQuery, typeQuery, setTypeQuery, selected, setSelected, isLoading, error, pokemonsData }} >
+        <GlobalStateContext.Provider value={{ nameNumberQuery, setNameNumberQuery, typeQuery, setTypeQuery, selected, setSelected, isLoading, error, pokemonsData, addPokedex, pokedexArray, setPokedexArray }} >
             {props.children}
         </GlobalStateContext.Provider>
     );

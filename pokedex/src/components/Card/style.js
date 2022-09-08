@@ -200,4 +200,14 @@ button {
         border: solid 2px gold;    
     }
     }
+
+    .red {
+        :hover {
+        cursor: pointer;
+        color: white;
+        box-shadow: 0 5px 35px #ff1c1c;
+        background: #ff1c1c;
+        border: solid 2px #ff1c1c;      
+    }
+    }
 `

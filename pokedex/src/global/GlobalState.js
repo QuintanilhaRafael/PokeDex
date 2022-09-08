@@ -59,6 +59,16 @@ function GlobalState(props) {
         setPokedexArray(newPokedexArray)
     }
 
+    var storedDex = JSON.parse(localStorage.getItem('pokedex'))
+    if ((storedDex) && (pokedexArray.length > 0)) {
+        for (let i=0; i<pokedexArray.length; i ++) {
+        var newDex = [...storedDex, pokedexArray[i]]
+        localStorage.setItem('pokedex', JSON.stringify(newDex)) 
+        }
+    } else if (pokedexArray.length > 0) {
+        localStorage.setItem('pokedex', JSON.stringify(pokedexArray))  
+    }
+
 
     return (
         <GlobalStateContext.Provider value={{ nameNumberQuery, setNameNumberQuery, typeQuery, setTypeQuery, selected, setSelected, isLoading, error, pokemonsData, addPokedex, pokedexArray, setPokedexArray }} >

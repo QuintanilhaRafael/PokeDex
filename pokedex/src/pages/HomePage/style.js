@@ -9,5 +9,5 @@ export const CardsSection = styled.div`
 `
 
 export const LoadingGif = styled.img`
-    width: 50px;
+    width: 70px;
 `

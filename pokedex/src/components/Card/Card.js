@@ -1,11 +1,18 @@
 import React from 'react'
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GlobalStateContext } from '../../global/GlobalStateContext';
+import { goToDetailsPage } from '../../routes/Coordinator';
 import { CardDiv, ImgDiv, TypesDiv, TypeSpan, InfosDiv, ButtonsDiv } from './style';
 
-export default function Card({ id, name, img, types, pokemon }) {
+export default function Card({ id, name, img, types, pokemon, buttonType }) {
 
-    const { addPokedex } = useContext(GlobalStateContext)
+    const { pokemonsData, setPokemonsData, pokedexArray, setPokedexArray } = useContext(GlobalStateContext)
+
+    const navigate = useNavigate();
+
+
+    // RENDER TYPES
 
     let firstPokemonType
     let secondPokemonType
@@ -16,6 +23,8 @@ export default function Card({ id, name, img, types, pokemon }) {
         firstPokemonType = types[0].type.name
     }
 
+    // RENDER POKEMON NUMBER
+
     let number
     if (id < 10) {
         number = `#00${id}`
@@ -24,6 +33,35 @@ export default function Card({ id, name, img, types, pokemon }) {
     } else {
         number = `#${id}`
     }
+
+    // RENDER BUTTON
+
+    let buttonRender
+    if (buttonType === 'remove') {
+        buttonRender = <button onClick={() => removePokedex(id)} className='red'>Remover</button>
+    } else {
+        buttonRender = <button onClick={() => addPokedex(id, pokemon)} className='green'>Adicionar</button>
+    }
+
+    // BUTTONS FUNCTIONS
+
+    const addPokedex = (cardId, pokemon) => {
+        const found = pokemonsData.findIndex((pkm) => pkm.data.id === cardId)
+        const newPokemonsData = [...pokemonsData]
+        newPokemonsData.splice(found, 1)
+        setPokemonsData(newPokemonsData)
+        const newPokedexArray = [...pokedexArray]
+        newPokedexArray.push(pokemon)
+        setPokedexArray(newPokedexArray)
+    }
+
+    const removePokedex = (cardId) => {
+        const found = pokedexArray.findIndex((pkm) => pkm.data.id === cardId)
+        const newPokedexArray = [...pokedexArray]
+        newPokedexArray.splice(found, 1)
+        setPokedexArray(newPokedexArray)
+    }
+
 
 
     return (
@@ -41,8 +79,8 @@ export default function Card({ id, name, img, types, pokemon }) {
                 </TypesDiv>
             </InfosDiv>
             <ButtonsDiv>
-                <button onClick={() => addPokedex(id, pokemon)} className='green'>Adicionar</button>
-                <button  className='yellow'>Detalhes</button>
+                {buttonRender}
+                <button onClick={() => goToDetailsPage(navigate, id)} className='yellow'>Detalhes</button>
             </ButtonsDiv>
         </CardDiv>
     )

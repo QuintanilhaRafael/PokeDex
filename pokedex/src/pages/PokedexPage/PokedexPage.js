@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card/Card";
@@ -8,18 +7,19 @@ import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage } from "../../routes/Coordinator";
 import { Header, Main, PageNav, PageTitle } from "../../style";
-import { CardsSection, LoadingGif } from "../HomePage/style";
+import { CardsSection } from "../HomePage/style";
 
 function PokedexPage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, isLoading, error, typeQuery, selected, pokedexArray } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, pokedexArray } = useContext(GlobalStateContext)
 
 
-    // RENDER POKEDEX
 
-    const pokedexList = pokedexArray && pokedexArray
+  // RENDER POKEDEX
+
+  const pokedexList = pokedexArray && pokedexArray
     .filter(pokemon => {
       return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase()) || `${pokemon.data.id}`.includes(nameNumberQuery)
     })
@@ -49,9 +49,10 @@ function PokedexPage() {
           img={pokemon.data.sprites.versions['generation-v']['black-white']['animated']['front_default']}
           types={pokemon.data.types}
           pokemon={pokemon}
+          buttonType={'remove'}
         />
       )
-    }) 
+    })
 
 
 

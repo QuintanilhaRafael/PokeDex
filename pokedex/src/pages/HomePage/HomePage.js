@@ -47,6 +47,7 @@ function HomePage() {
           img={pokemon.data.sprites.versions['generation-v']['black-white']['animated']['front_default']}
           types={pokemon.data.types}
           pokemon={pokemon}
+          buttonType={'add'}
         />
       )
     })

@@ -63,8 +63,8 @@ function GlobalState(props) {
     if ((storedDex) && (pokedexArray.length > 0)) {
         for (let i=0; i<pokedexArray.length; i ++) {
         var newDex = [...storedDex, pokedexArray[i]]
-        localStorage.setItem('pokedex', JSON.stringify(newDex)) 
         }
+        localStorage.setItem('pokedex', JSON.stringify(newDex)) 
     } else if (pokedexArray.length > 0) {
         localStorage.setItem('pokedex', JSON.stringify(pokedexArray))  
     }

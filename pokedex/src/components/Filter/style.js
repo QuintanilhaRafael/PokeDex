@@ -5,6 +5,7 @@ export const FilterDiv = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    margin-bottom: 10px;
 
 `
 

@@ -5,9 +5,9 @@ import Filters from "../../components/Filter/Filters";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
-import { Header, Main, PageNav, PageTitle } from "../../style";
+import { Header, Main, PageContainer, PageNav, PageTitle } from "../../style";
 import Card from './../../components/Card/Card';
-import { CardsSection } from "./style";
+import { CardsSection, LoadingGif } from "./style";
 
 function HomePage() {
 
@@ -24,11 +24,11 @@ function HomePage() {
     .filter(pokemon => {
       let pokemonType
       if (pokemon.data.types[1]) {
-        pokemonType = pokemon.data.types[0].type.name + " | " + pokemon.data.types[1].type.name
+        pokemonType = pokemon.data.types[0].type.name + pokemon.data.types[1].type.name
       } else {
         pokemonType = pokemon.data.types[0].type.name
       }
-      return pokemonType.includes(typeQuery)
+      return pokemonType.toLowerCase().includes(typeQuery.toLowerCase())
     })
     .sort((pokemon1, pokemon2) => {
       switch (selected) {
@@ -40,12 +40,19 @@ function HomePage() {
     })
     .map(pokemon => {
       return (
-        <Card id={pokemon.data.id} name={pokemon.data.name} img={pokemon.data.sprites.versions['generation-v']['black-white']['animated']['front_default']} types={pokemon.data.types}/>
+        <Card
+          key={pokemon.data.id}
+          id={pokemon.data.id}
+          name={pokemon.data.name}
+          img={pokemon.data.sprites.versions['generation-v']['black-white']['animated']['front_default']}
+          types={pokemon.data.types}
+          pokemon={pokemon}
+        />
       )
     })
 
   return (
-    <div>
+    <PageContainer>
 
       <Header>
         <PageTitle>
@@ -61,13 +68,13 @@ function HomePage() {
 
         <Filters />
         <CardsSection>
-        {isLoading && <span>Carregando...</span>}
-        {!isLoading && pokemonsData && pokemonsList}
-        {!isLoading && !pokemonsData && error}
+          {isLoading && <LoadingGif src="https://thumbs.gfycat.com/DampSpanishCleanerwrasse-max-1mb.gif" />}
+          {!isLoading && pokemonsData && pokemonsList}
+          {!isLoading && !pokemonsData && error}
         </CardsSection>
       </Main>
 
-    </div>
+    </PageContainer>
   );
 }
 

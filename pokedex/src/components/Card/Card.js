@@ -1,13 +1,17 @@
 import React from 'react'
+import { useContext } from 'react';
+import { GlobalStateContext } from '../../global/GlobalStateContext';
 import { CardDiv, ImgDiv, TypesDiv, TypeSpan, InfosDiv, ButtonsDiv } from './style';
 
-export default function Card({ id, name, img, types }) {
+export default function Card({ id, name, img, types, pokemon }) {
+
+    const { addPokedex } = useContext(GlobalStateContext)
 
     let firstPokemonType
     let secondPokemonType
     if (types[1]) {
         firstPokemonType = types[0].type.name
-        secondPokemonType = types[1].type.name 
+        secondPokemonType = types[1].type.name
     } else {
         firstPokemonType = types[0].type.name
     }
@@ -21,9 +25,10 @@ export default function Card({ id, name, img, types }) {
         number = `#${id}`
     }
 
+
     return (
 
-        <CardDiv key={id}>
+        <CardDiv>
             <ImgDiv>
                 <img src={img} alt={name} />
             </ImgDiv>
@@ -36,8 +41,8 @@ export default function Card({ id, name, img, types }) {
                 </TypesDiv>
             </InfosDiv>
             <ButtonsDiv>
-            <button className='green'>Adicionar</button>
-            <button className='yellow'>Detalhes</button>
+                <button onClick={() => addPokedex(id, pokemon)} className='green'>Adicionar</button>
+                <button  className='yellow'>Detalhes</button>
             </ButtonsDiv>
         </CardDiv>
     )

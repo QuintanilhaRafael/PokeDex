@@ -5,4 +5,9 @@ export const CardsSection = styled.div`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    min-height: 60vh;
+`
+
+export const LoadingGif = styled.img`
+    width: 50px;
 `

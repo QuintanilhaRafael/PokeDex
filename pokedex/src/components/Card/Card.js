@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRef } from 'react';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GlobalStateContext } from '../../global/GlobalStateContext';
@@ -7,7 +8,7 @@ import { CardDiv, ImgDiv, TypesDiv, TypeSpan, InfosDiv, ButtonsDiv } from './sty
 
 export default function Card({ id, name, img, types, pokemon, buttonType }) {
 
-    const { pokemonsData, setPokemonsData, pokedexArray, setPokedexArray } = useContext(GlobalStateContext)
+    const { pokemonsData, setPokemonsData, pokedexArray, setPokedexArray, didMount, playGotcha, playRun } = useContext(GlobalStateContext)
 
     const navigate = useNavigate();
 
@@ -53,6 +54,8 @@ export default function Card({ id, name, img, types, pokemon, buttonType }) {
         const newPokedexArray = [...pokedexArray]
         newPokedexArray.push(pokemon)
         setPokedexArray(newPokedexArray)
+        didMount.current = true
+        playGotcha()
     }
 
     const removePokedex = (cardId) => {
@@ -60,6 +63,7 @@ export default function Card({ id, name, img, types, pokemon, buttonType }) {
         const newPokedexArray = [...pokedexArray]
         newPokedexArray.splice(found, 1)
         setPokedexArray(newPokedexArray)
+        playRun()
     }
 
 

@@ -13,7 +13,7 @@ function HomePage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn } = useContext(GlobalStateContext)
 
   // RENDER POKEMONS
 
@@ -61,7 +61,7 @@ function HomePage() {
           <h1>Lista de Pokémons</h1>
         </PageTitle>
         <PageNav>
-          <button onClick={() => goToPokedexPage(navigate)}>Ir para Pokédex</button>
+          <button onClick={() => {goToPokedexPage(navigate); playPcOn();}}>Ir para Pokédex</button>
         </PageNav>
       </Header>
 

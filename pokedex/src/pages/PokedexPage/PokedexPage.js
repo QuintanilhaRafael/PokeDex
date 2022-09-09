@@ -13,7 +13,7 @@ function PokedexPage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, pokedexArray } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, pokedexArray, playPcOff } = useContext(GlobalStateContext)
 
 
 
@@ -65,7 +65,7 @@ function PokedexPage() {
           <h1>Pokédex</h1>
         </PageTitle>
         <PageNav>
-          <button onClick={() => goToHomePage(navigate)}>Voltar para a lista de Pokémons</button>
+          <button onClick={() => {goToHomePage(navigate); playPcOff();}}>Voltar para a lista de Pokémons</button>
         </PageNav>
       </Header>
 

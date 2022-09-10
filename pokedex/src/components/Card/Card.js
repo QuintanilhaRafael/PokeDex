@@ -8,7 +8,7 @@ import { CardDiv, ImgDiv, TypesDiv, TypeSpan, InfosDiv, ButtonsDiv } from './sty
 
 export default function Card({ id, name, img, types, pokemon, buttonType, detailType }) {
 
-    const { playAPress, setDetailButton, addPokedex, removePokedex } = useContext(GlobalStateContext)
+    const { playPokeSound, setDetailButton, addPokedex, removePokedex } = useContext(GlobalStateContext)
 
     const navigate = useNavigate();
 
@@ -64,7 +64,7 @@ export default function Card({ id, name, img, types, pokemon, buttonType, detail
             </InfosDiv>
             <ButtonsDiv>
                 {buttonRender}
-                <button onClick={() => {goToDetailsPage(navigate, id); playAPress(); setDetailButton(detailType)}} className='yellow'>Detalhes</button>
+                <button onClick={() => {goToDetailsPage(navigate, id); playPokeSound(id); setDetailButton(detailType)}} className='yellow'>Detalhes</button>
             </ButtonsDiv>
         </CardDiv>
     )

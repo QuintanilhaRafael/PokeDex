@@ -13,13 +13,13 @@ function PokedexPage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, pokedexArray, playPcOff } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, pokedexArray, playPcOff, playAPress, storedDex } = useContext(GlobalStateContext)
 
 
 
   // RENDER POKEDEX
 
-  const pokedexList = pokedexArray && pokedexArray
+  const pokedexList = storedDex.current && storedDex.current
     .filter(pokemon => {
       let number
       if (pokemon.data.id < 10) {
@@ -70,7 +70,7 @@ function PokedexPage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => goToHomePage(navigate)} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playAPress(); }} src={pokeball} alt="pokeball" />
           <h1>Pokédex</h1>
         </PageTitle>
         <PageNav>

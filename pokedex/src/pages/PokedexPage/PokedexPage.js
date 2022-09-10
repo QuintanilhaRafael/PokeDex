@@ -21,7 +21,15 @@ function PokedexPage() {
 
   const pokedexList = pokedexArray && pokedexArray
     .filter(pokemon => {
-      return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase()) || `${pokemon.data.id}`.includes(nameNumberQuery)
+      let number
+      if (pokemon.data.id < 10) {
+        number = `#00${pokemon.data.id}`
+      } else if (pokemon.data.id >= 10 && pokemon.data.id < 100) {
+        number = `#0${pokemon.data.id}`
+      } else {
+        number = `#${pokemon.data.id}`
+      }
+      return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase()) || number.includes(nameNumberQuery)
     })
     .filter(pokemon => {
       let pokemonType
@@ -50,6 +58,7 @@ function PokedexPage() {
           types={pokemon.data.types}
           pokemon={pokemon}
           buttonType={'remove'}
+          detailType={'pokedex'}
         />
       )
     })
@@ -65,7 +74,7 @@ function PokedexPage() {
           <h1>Pokédex</h1>
         </PageTitle>
         <PageNav>
-          <button onClick={() => {goToHomePage(navigate); playPcOff();}}>Voltar para a lista de Pokémons</button>
+          <button onClick={() => { goToHomePage(navigate); playPcOff(); }}>Voltar para a lista de Pokémons</button>
         </PageNav>
       </Header>
 

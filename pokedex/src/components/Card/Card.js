@@ -6,11 +6,13 @@ import { GlobalStateContext } from '../../global/GlobalStateContext';
 import { goToDetailsPage } from '../../routes/Coordinator';
 import { CardDiv, ImgDiv, TypesDiv, TypeSpan, InfosDiv, ButtonsDiv } from './style';
 
-export default function Card({ id, name, img, types, pokemon, buttonType }) {
+export default function Card({ id, name, img, types, pokemon, buttonType, detailType }) {
 
-    const { pokemonsData, setPokemonsData, pokedexArray, setPokedexArray, didMount, playGotcha, playRun } = useContext(GlobalStateContext)
+    const { playAPress, setDetailButton, addPokedex, removePokedex } = useContext(GlobalStateContext)
 
     const navigate = useNavigate();
+
+    console.log(pokemon)
 
 
     // RENDER TYPES
@@ -44,28 +46,6 @@ export default function Card({ id, name, img, types, pokemon, buttonType }) {
         buttonRender = <button onClick={() => addPokedex(id, pokemon)} className='green'>Adicionar</button>
     }
 
-    // BUTTONS FUNCTIONS
-
-    const addPokedex = (cardId, pokemon) => {
-        const found = pokemonsData.findIndex((pkm) => pkm.data.id === cardId)
-        const newPokemonsData = [...pokemonsData]
-        newPokemonsData.splice(found, 1)
-        setPokemonsData(newPokemonsData)
-        const newPokedexArray = [...pokedexArray]
-        newPokedexArray.push(pokemon)
-        setPokedexArray(newPokedexArray)
-        didMount.current = true
-        playGotcha()
-    }
-
-    const removePokedex = (cardId) => {
-        const found = pokedexArray.findIndex((pkm) => pkm.data.id === cardId)
-        const newPokedexArray = [...pokedexArray]
-        newPokedexArray.splice(found, 1)
-        setPokedexArray(newPokedexArray)
-        playRun()
-    }
-
 
 
     return (
@@ -84,7 +64,7 @@ export default function Card({ id, name, img, types, pokemon, buttonType }) {
             </InfosDiv>
             <ButtonsDiv>
                 {buttonRender}
-                <button onClick={() => goToDetailsPage(navigate, id)} className='yellow'>Detalhes</button>
+                <button onClick={() => {goToDetailsPage(navigate, id); playAPress(); setDetailButton(detailType)}} className='yellow'>Detalhes</button>
             </ButtonsDiv>
         </CardDiv>
     )

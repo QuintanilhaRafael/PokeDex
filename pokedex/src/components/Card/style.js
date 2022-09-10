@@ -21,7 +21,6 @@ border-radius: 5px;
 
 :hover {
   animation: pokehop .3s;
-  cursor: pointer;
 }
 
 img {
@@ -33,7 +32,6 @@ img {
 
 p {
     color: gray;
-    margin-bottom: 7px;
     margin-left: 10px;
 }
 `
@@ -53,18 +51,16 @@ flex-direction: column;
 margin-bottom: 10px;
 
 .nameSpan {
-    font-size: 1.3rem;
-    font-weight: 1000;
-    margin-left: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
     text-align: center;
+    margin-bottom: 7px;
 }
 `
 
 export const TypesDiv = styled.div`
 display: flex;
 justify-content: center;
-/* margin-left: 8px; */
-margin-top: 3px;
 
 .normal {
     background-color: #a4acaf;
@@ -159,11 +155,10 @@ export const TypeSpan = styled.span`
 display: flex;
 justify-content: center;
 align-items: center;
-font-size: 15px;
+font-size: 13px;
 width: 75px;
 margin: 0px 2px;
 border-radius: 2px;
-
 
 `
 

@@ -19,7 +19,15 @@ function HomePage() {
 
   const pokemonsList = pokemonsData && pokemonsData
     .filter(pokemon => {
-      return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase()) || `${pokemon.data.id}`.includes(nameNumberQuery)
+      let number
+      if (pokemon.data.id < 10) {
+        number = `#00${pokemon.data.id}`
+      } else if (pokemon.data.id >= 10 && pokemon.data.id < 100) {
+        number = `#0${pokemon.data.id}`
+      } else {
+        number = `#${pokemon.data.id}`
+      }
+      return pokemon.data.name.toLowerCase().includes(nameNumberQuery.toLowerCase()) || number.includes(nameNumberQuery)
     })
     .filter(pokemon => {
       let pokemonType
@@ -43,11 +51,12 @@ function HomePage() {
         <Card
           key={pokemon.data.id}
           id={pokemon.data.id}
-          name={pokemon.data.name}
+          name={pokemon.data.name.charAt(0).toUpperCase() + pokemon.data.name.slice(1)}
           img={pokemon.data.sprites.versions['generation-v']['black-white']['animated']['front_default']}
           types={pokemon.data.types}
           pokemon={pokemon}
           buttonType={'add'}
+          detailType={'home'}
         />
       )
     })
@@ -61,7 +70,7 @@ function HomePage() {
           <h1>Lista de Pokémons</h1>
         </PageTitle>
         <PageNav>
-          <button onClick={() => {goToPokedexPage(navigate); playPcOn();}}>Ir para Pokédex</button>
+          <button onClick={() => { goToPokedexPage(navigate); playPcOn(); }}>Ir para Pokédex</button>
         </PageNav>
       </Header>
 

@@ -3,7 +3,6 @@ import React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { BASE_URL } from "../constants/constants";
 import { GlobalStateContext } from "./GlobalStateContext";
 import gotcha from '../sounds/Gotcha.mp3'
@@ -25,6 +24,8 @@ function GlobalState(props) {
     const [isLoading, setIsLoading] = useState(undefined)
     const [error, setError] = useState(undefined)
     const didMount = useRef(false)
+    const [detailButton, setDetailButton] = useState('')
+    const [pokemonArray, setPokemonArray] = useState([])
 
     // Effects
 
@@ -96,8 +97,29 @@ function GlobalState(props) {
         new Audio(apress).play();
     }
 
+    // BUTTONS FUNCTIONS
 
-    
+    const addPokedex = (id, pokemon) => {
+        const found = pokemonsData.findIndex((pkm) => pkm.data.id === id)
+        const newPokemonsData = [...pokemonsData]
+        newPokemonsData.splice(found, 1)
+        setPokemonsData(newPokemonsData)
+        const newPokedexArray = [...pokedexArray]
+        newPokedexArray.push(pokemon)
+        setPokedexArray(newPokedexArray)
+        didMount.current = true
+        playGotcha()
+    }
+
+    const removePokedex = (id) => {
+        const found = pokedexArray.findIndex((pkm) => pkm.data.id === id)
+        const newPokedexArray = [...pokedexArray]
+        newPokedexArray.splice(found, 1)
+        setPokedexArray(newPokedexArray)
+        playRun()
+    }
+
+
 
 
     return (
@@ -124,7 +146,13 @@ function GlobalState(props) {
                     playPcOn,
                     playPcOff,
                     playRun,
-                    playAPress
+                    playAPress,
+                    detailButton,
+                    setDetailButton,
+                    addPokedex,
+                    removePokedex,
+                    pokemonArray,
+                    setPokemonArray
                 }
             } >
             {props.children}

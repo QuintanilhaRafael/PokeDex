@@ -9,7 +9,7 @@ export const DetailsSection = styled.div`
 export const DetailsDiv = styled.div`
     display: flex;
     flex-direction: column;
-    width: 65%;
+    width: 60%;
     
     h1 {
         align-self: center;
@@ -45,11 +45,12 @@ export const ImgDiv = styled.div`
 export const StatsDiv = styled.div`
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 20px;
     height: 500px;
     width: 300px;
+    background-color: whitesmoke;
 
     h2 {
         text-align: center;
@@ -73,9 +74,10 @@ export const TypeDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 20px;
+    background-color: whitesmoke;
 
     .normal {
     background-color: #a4acaf;
@@ -184,12 +186,13 @@ export const TypeSpan = styled.span`
 export const MoveDiv = styled.div`
     display: flex;
     flex-direction: column;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 20px;
     margin-top: 15px;
     height: 100%;
     overflow-y: auto;
+    background-color: whitesmoke;
 
     ::-webkit-scrollbar {
         width: 10px;

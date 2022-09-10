@@ -1,21 +1,24 @@
 import React from "react";
 import { useContext } from "react";
+import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import Filters from "../../components/Filter/Filters";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage } from "../../routes/Coordinator";
-import { Header, Main, PageNav, PageTitle } from "../../style";
-import { CardsSection } from "../HomePage/style";
+import { CardsSection, Header, Main, PageNav, PageTitle } from "../../style";
 
 function PokedexPage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, pokedexArray, playPcOff, playAPress, storedDex } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, playPcOff, playAPress, storedDex, pageNumber, setPageNumber } = useContext(GlobalStateContext)
 
+  // PAGINATION
 
+  const cardsPerPage = 16
+  const pagesVisited = pageNumber * cardsPerPage
 
   // RENDER POKEDEX
 
@@ -48,6 +51,9 @@ function PokedexPage() {
           return pokemon1.data.id - pokemon2.data.id
       }
     })
+
+  const displayCards = pokedexList && pokedexList
+    .slice(pagesVisited, pagesVisited + cardsPerPage)
     .map(pokemon => {
       return (
         <Card
@@ -63,7 +69,11 @@ function PokedexPage() {
       )
     })
 
+  const pageCount = Math.ceil(pokedexList.length / cardsPerPage)
 
+  const changePage = ({ selected }) => {
+    setPageNumber(selected)
+  }
 
   return (
     <div>
@@ -83,8 +93,20 @@ function PokedexPage() {
         <Filters />
 
         <CardsSection>
-          {pokedexList}
+          {displayCards}
         </CardsSection>
+
+        <ReactPaginate
+          previousLabel={<i className="fa fa-angle-left"></i>}
+          nextLabel={<i className="fa fa-angle-right"></i>}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationButtons"}
+          previousLinkClassName={"previousButton"}
+          nextLinkClassName={"nextButton"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
 
       </Main>
 

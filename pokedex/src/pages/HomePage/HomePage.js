@@ -5,15 +5,21 @@ import Filters from "../../components/Filter/Filters";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
-import { Header, Main, PageContainer, PageNav, PageTitle } from "../../style";
+import { CardsSection, Header, Main, PageContainer, PageNav, PageTitle } from "../../style";
 import Card from './../../components/Card/Card';
-import { CardsSection, LoadingGif } from "./style";
+import { LoadingGif } from "./style";
+import ReactPaginate from "react-paginate";
 
 function HomePage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress, pageNumber, setPageNumber } = useContext(GlobalStateContext)
+
+  // PAGINATION
+
+  const cardsPerPage = 16
+  const pagesVisited = pageNumber * cardsPerPage
 
   // RENDER POKEMONS
 
@@ -46,6 +52,9 @@ function HomePage() {
           return pokemon1.data.id - pokemon2.data.id
       }
     })
+
+  const displayCards = pokemonsList && pokemonsList
+    .slice(pagesVisited, pagesVisited + cardsPerPage)
     .map(pokemon => {
       return (
         <Card
@@ -60,6 +69,13 @@ function HomePage() {
         />
       )
     })
+
+
+  const pageCount = Math.ceil(pokemonsList.length / cardsPerPage)
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected)
+  }
 
   return (
     <PageContainer>
@@ -79,9 +95,20 @@ function HomePage() {
         <Filters />
         <CardsSection>
           {isLoading && <LoadingGif src="https://thumbs.gfycat.com/DampSpanishCleanerwrasse-max-1mb.gif" />}
-          {!isLoading && pokemonsData && pokemonsList}
+          {!isLoading && pokemonsData && displayCards}
           {!isLoading && !pokemonsData && error}
         </CardsSection>
+        <ReactPaginate
+          previousLabel={<i class="fa fa-angle-left"></i>}
+          nextLabel={<i class="fa fa-angle-right"></i>}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationButtons"}
+          previousLinkClassName={"previousButton"}
+          nextLinkClassName={"nextButton"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
       </Main>
 
     </PageContainer>

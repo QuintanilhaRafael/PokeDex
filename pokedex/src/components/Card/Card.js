@@ -12,8 +12,6 @@ export default function Card({ id, name, img, types, pokemon, buttonType, detail
 
     const navigate = useNavigate();
 
-    console.log(pokemon)
-
 
     // RENDER TYPES
 

@@ -558,7 +558,7 @@ function GlobalState(props) {
     // BUTTONS FUNCTIONS
 
     const addPokedex = (id, pokemon) => {
-        const found = pokemonsData.findIndex((pkm) => pkm.data.id === id)
+        const found = pokemonsData.findIndex((pkm) => pkm.data.id == id)
         const newPokemonsData = [...pokemonsData]
         newPokemonsData.splice(found, 1)
         setPokemonsData(newPokemonsData)
@@ -570,14 +570,12 @@ function GlobalState(props) {
     }
 
     const removePokedex = (id) => {
-        const found = pokedexArray.findIndex((pkm) => pkm.data.id === id)
+        const found = pokedexArray.findIndex((pkm) => pkm.data.id == id)
         const newPokedexArray = [...pokedexArray]
         newPokedexArray.splice(found, 1)
         setPokedexArray(newPokedexArray)
         playRun()
     }
-
-
 
 
     return (

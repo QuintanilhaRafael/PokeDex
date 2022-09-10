@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 `
 
 export const Header = styled.header`
@@ -80,6 +81,43 @@ export const PageNav = styled.div`
 export const Main = styled.main`
     display: flex;
     flex-direction: column;
+
+    .paginationButtons {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 20px 0;
+        height: 40px;
+        font-size: 1.1em;
+        top: 100%;
+        position: sticky;
+
+        i {
+            font-size: 1.5em;
+            margin: 0 10px;
+            color: black;
+        }
+    }
+
+    .paginationButtons a{
+        margin: 8px;
+        color:  #ff1c1c;
+        cursor: pointer;
+    }
+
+    .paginationActive a{
+        font-size: 1.1em;
+        font-weight: 1000;
+        color: black;
+    }
+`
+export const CardsSection = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 65vh;
 `
 
 

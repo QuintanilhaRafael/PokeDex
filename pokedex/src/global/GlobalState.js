@@ -29,6 +29,7 @@ function GlobalState(props) {
     const storedDex = useRef([])
     const [detailButton, setDetailButton] = useState('')
     const [pokemonArray, setPokemonArray] = useState([])
+    const [pageNumber, setPageNumber] = useState(0)
 
     // Effects
 
@@ -55,32 +56,7 @@ function GlobalState(props) {
     }, [pokedexArray]
     )
 
-
-    // Requests
-
-    const getPokemons = () => {
-        axios.get(`${BASE_URL}/?offset=0&limit=151`)
-            .then((response) => {
-                getPokemonsInfo(response.data.results)
-            }).catch((err) => {
-                setError(err)
-            })
-    }
-
-    const getPokemonsInfo = (res) => {
-        setIsLoading(true);
-        axios.all(res.map((pokemon) => axios.get(pokemon.url)))
-            .then((response) => {
-                setTimeout(() => {
-                    setIsLoading(false)
-                    setPokemonsData(response)
-                }, 1000)
-            }).catch((err) => {
-                setIsLoading(false)
-                setError(err)
-            })
-    }
-
+    
     // SOUNDS
 
     const playGotcha = () => {
@@ -564,6 +540,34 @@ function GlobalState(props) {
         audio.play();
     }
 
+
+    // Requests
+
+    const getPokemons = () => {
+        axios.get(`${BASE_URL}/?offset=0&limit=151`)
+            .then((response) => {
+                getPokemonsInfo(response.data.results)
+
+            }).catch((err) => {
+                setError(err)
+            })
+    }
+
+    const getPokemonsInfo = (res) => {
+        setIsLoading(true);
+        axios.all(res.map((pokemon) => axios.get(pokemon.url)))
+            .then((response) => {
+                setTimeout(() => {
+                    setIsLoading(false)
+                    setPokemonsData(response)
+                }, 1000)
+            }).catch((err) => {
+                setIsLoading(false)
+                setError(err)
+            })
+    }
+
+
     // BUTTONS FUNCTIONS
 
     const addPokedex = (id, pokemon) => {
@@ -644,7 +648,9 @@ function GlobalState(props) {
                     pokemonArray,
                     setPokemonArray,
                     storedDex,
-                    reRenderAdd
+                    reRenderAdd,
+                    pageNumber, 
+                    setPageNumber,
                 }
             } >
             {props.children}

@@ -17,7 +17,7 @@ function DetailsPage() {
 
   const pathParams = useParams();
 
-  const { isLoading, error, pokemonDetails, setPokemonDetails, setIsLoading, setError, detailButton, addPokedex, removePokedex, pokemonArray, setPokemonArray, playGotcha, playRun, playAPress, reRenderAdd } = useContext(GlobalStateContext)
+  const { isLoading, error, pokemonDetails, setPokemonDetails, setIsLoading, setError, detailButton, addPokedex, removePokedex, pokemonArray, setPokemonArray, playAPress, reRenderAdd } = useContext(GlobalStateContext)
 
   // REQUEST
 
@@ -81,10 +81,6 @@ function DetailsPage() {
       <DetailsDiv key={pokemon.id}>
         <h1><span>{number}</span>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
         <InfoDiv>
-          <ImgDiv>
-            <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default']} alt={pokemon.name} />
-            <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['back_default']} alt={pokemon.name} />
-          </ImgDiv>
           <StatsDiv>
             <h2>Estatísticas</h2>
             {pokemon.stats && pokemon.stats
@@ -97,6 +93,10 @@ function DetailsPage() {
                 )
               })}
           </StatsDiv>
+          <ImgDiv>
+            <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default']} alt={pokemon.name} />
+            <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['back_default']} alt={pokemon.name} />
+          </ImgDiv>
           <MoveTypeDiv>
             <TypeDiv>
               <div>

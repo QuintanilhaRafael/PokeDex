@@ -40,6 +40,7 @@ function DetailsPage() {
         setError(err)
       })
   }
+  
 
 
   // RENDER BUTTON
@@ -65,9 +66,20 @@ function DetailsPage() {
       firstPokemonType = pokemon.types[0].type.name
     }
 
+    // RENDER NUMBER
+
+    let number
+    if (pokemon.id < 10) {
+        number = `#00${pokemon.id}`
+    } else if (pokemon.id >= 10 && pokemon.id < 100) {
+        number = `#0${pokemon.id}`
+    } else {
+        number = `#${pokemon.id}`
+    }    
+
     return (
       <DetailsDiv key={pokemon.id}>
-        <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+        <h1><span>{number}</span>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
         <InfoDiv>
           <ImgDiv>
             <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default']} alt={pokemon.name} />

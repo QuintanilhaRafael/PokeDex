@@ -14,6 +14,12 @@ export const DetailsDiv = styled.div`
     h1 {
         align-self: center;
         margin-top: 10px;
+
+        span {
+            color: gray;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
     }
 
 `

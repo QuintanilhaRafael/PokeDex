@@ -12,8 +12,6 @@ export default function Card({ id, name, img, types, pokemon, buttonType, detail
 
     const navigate = useNavigate();
 
-    console.log(pokemon)
-
 
     // RENDER TYPES
 
@@ -64,7 +62,7 @@ export default function Card({ id, name, img, types, pokemon, buttonType, detail
             </InfosDiv>
             <ButtonsDiv>
                 {buttonRender}
-                <button onClick={() => {goToDetailsPage(navigate, id); playPokeSound(id); setDetailButton(detailType)}} className='yellow'>Detalhes</button>
+                <button onClick={() => { goToDetailsPage(navigate, id); playPokeSound(id); setDetailButton(detailType) }} className='yellow'>Detalhes</button>
             </ButtonsDiv>
         </CardDiv>
     )

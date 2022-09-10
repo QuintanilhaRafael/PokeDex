@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants/constants";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
-import { goBack, goToHomePage } from "../../routes/Coordinator";
+import { goBack, goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
 import { Header, Main, PageContainer, PageNav, PageTitle } from "../../style";
 import { LoadingGif } from "../HomePage/style";
 import { DetailsDiv, DetailsSection, ImgDiv, InfoDiv, MoveDiv, MoveItem, MoveTypeDiv, StatItem, StatsDiv, TypeDiv, TypeSpan } from "./style";
@@ -17,7 +17,7 @@ function DetailsPage() {
 
   const pathParams = useParams();
 
-  const { isLoading, error, pokemonDetails, setPokemonDetails, setIsLoading, setError, detailButton, addPokedex, removePokedex, pokemonArray, setPokemonArray } = useContext(GlobalStateContext)
+  const { isLoading, error, pokemonDetails, setPokemonDetails, setIsLoading, setError, detailButton, addPokedex, removePokedex, pokemonArray, setPokemonArray, playGotcha, playRun, playAPress, reRenderAdd } = useContext(GlobalStateContext)
 
   // REQUEST
 
@@ -46,9 +46,9 @@ function DetailsPage() {
 
   let buttonRender;
   if (detailButton === 'home') {
-    buttonRender = <button onClick={() => addPokedex(pathParams.id, pokemonArray)} >Adicionar à Pokédex</button>
+    buttonRender = <button onClick={() => { addPokedex(pathParams.id, pokemonArray); goToPokedexPage(navigate); reRenderAdd(); }} >Adicionar à Pokédex</button>
   } else {
-    buttonRender = <button onClick={() => removePokedex(pathParams.id)} >Remover da Pokédex</button>
+    buttonRender = <button onClick={() => { removePokedex(pathParams.id); goToPokedexPage(navigate); }} >Remover da Pokédex</button>
   }
 
 
@@ -114,11 +114,11 @@ function DetailsPage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => goToHomePage(navigate)} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playAPress(); }} src={pokeball} alt="pokeball" />
           <h1>Detalhes do Pokémon</h1>
         </PageTitle>
         <PageNav>
-          <button onClick={() => goBack(navigate)}>Voltar</button>
+          <button onClick={() => { goBack(navigate); playAPress(); }}>Voltar</button>
           {buttonRender}
         </PageNav>
       </Header>

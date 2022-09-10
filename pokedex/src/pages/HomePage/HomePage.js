@@ -13,7 +13,7 @@ function HomePage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress } = useContext(GlobalStateContext)
 
   // RENDER POKEMONS
 
@@ -66,7 +66,7 @@ function HomePage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => goToHomePage(navigate)} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playAPress(); }} src={pokeball} alt="pokeball" />
           <h1>Lista de Pokémons</h1>
         </PageTitle>
         <PageNav>

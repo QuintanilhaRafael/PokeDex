@@ -66,7 +66,7 @@ function PokedexPage() {
         <Card
           key={pokemon.data.id}
           id={pokemon.data.id}
-          name={pokemon.data.name}
+          name={pokemon.data.name.charAt(0).toUpperCase() + pokemon.data.name.slice(1)}
           img={pokemon.data.sprites.versions['generation-v']['black-white']['animated']['front_default']}
           types={pokemon.data.types}
           pokemon={pokemon}

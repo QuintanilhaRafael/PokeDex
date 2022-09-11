@@ -17,7 +17,7 @@ www.link.com.br
      - Pagination (16 cards renderizados por página).
      - Botão no header para navegar para a Pokédex.
      - Botões do card: 
-        - Adicionar: Adiciona o Pokémon na Pokedéx.
+        - Adicionar: Adiciona o Pokémon na Pokédex.
         - Detalhes: Abre a página de detalhes do Pokémon.
 - Pokédex:
      - Lista de cards com informações dos pokémons que foram adicionados na Pokédex.

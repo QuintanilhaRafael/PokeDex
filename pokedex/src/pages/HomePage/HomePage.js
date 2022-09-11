@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Filters from "../../components/Filter/Filters";
@@ -14,6 +14,13 @@ function HomePage() {
   const navigate = useNavigate();
 
   const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber } = useContext(GlobalStateContext)
+
+  // Effects
+
+  useEffect(() => {
+    setListPageNumber(0)
+  }, []
+  )
 
   // PAGINATION
 
@@ -72,10 +79,6 @@ function HomePage() {
 
   const pageCount = Math.ceil(pokemonsList.length / cardsPerPage)
 
-  const pageNavigation = () => {
-    setListPageNumber(0)
-  }
-
   const changePage = ({ selected }) => {
     setListPageNumber(selected)
   }
@@ -85,7 +88,7 @@ function HomePage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => { goToHomePage(navigate); playAPress(); pageNavigation() }} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playAPress(); }} src={pokeball} alt="pokeball" />
           <h1>Lista de Pokémons</h1>
         </PageTitle>
         <PageNav>

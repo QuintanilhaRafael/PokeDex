@@ -24,7 +24,7 @@ www.link.com.br
      - Pagination (16 cards renderizados por página).
      - Botão no header para navegar de volta para a lista de Pokémons.
      - Botões do card: 
-        - Remover: Remove o Pokémon da Pokedéx.
+        - Remover: Remove o Pokémon da Pokédex.
         - Detalhes: Abre a página de detalhes do Pokémon.
 - Página de detalhes:
      - Lista com as informações do Pokémon.

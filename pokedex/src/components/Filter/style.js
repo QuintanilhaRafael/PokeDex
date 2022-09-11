@@ -7,6 +7,14 @@ export const FilterDiv = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
 
+    @media (max-width: 710px) {
+        flex-direction: column;
+    }
+
+    @media (max-width: 545px) {
+        margin-top: 0;
+    }
+
 `
 
 export const Field = styled.div`
@@ -33,5 +41,30 @@ export const Field = styled.div`
         border-radius: 6px;
         width: 100%;
     }
+
+    @media (max-width: 950px) {
+        margin: 0 10px;
+    }
+
+    @media (max-width: 710px) {
+        margin-top: 10px;
+        width: 85%;
+    }
+
+
+    @media (max-width: 545px) {
+        font-size: 0.8rem;
+
+        input {
+            padding: 2px 6px;
+            font-size: 0.7rem;
+        }
+
+        select {
+            padding: 2px 6px;
+            font-size: 0.7rem;
+        }
+    }
+
 `
 

@@ -18,6 +18,7 @@ export const PageContainer = styled.div`
 export const Header = styled.header`
     display: flex;
     flex-direction: column;
+
 `
 
 export const PageTitle = styled.div`
@@ -46,6 +47,37 @@ export const PageTitle = styled.div`
         text-align: center;
     }
 
+    @media (max-width: 710px) {
+
+        img {
+            width: 60px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            text-align: end;
+        }
+    }   
+
+    @media (max-width: 545px) {
+
+        padding: 5px 10px;
+        letter-spacing: 2px;
+
+
+        img {
+            width: 35px;
+        }        
+
+        h1 {
+            font-size: 1.3rem;
+        }
+        
+    }   
+
+
+
 `
 export const PageNav = styled.div`
     display: flex;
@@ -73,7 +105,29 @@ export const PageNav = styled.div`
             background-size: 100% 100%;
         }   
         
-    }  
+    } 
+
+    @media (max-width: 710px) {
+        
+        button {
+            font-size: 1.1rem;
+        }
+        
+    }    
+    
+
+    @media (max-width: 545px) {
+
+        padding: 5px 15px;
+
+        button {
+            font-size: 0.8rem;
+        }
+
+
+    }   
+
+  
 
 
 `
@@ -118,6 +172,16 @@ export const CardsSection = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     min-height: 65vh;
+    
+`
+
+export const LoadingGif = styled.img`
+    width: 70px;
+    align-self: center;
+
+    @media (max-width: 545px) {
+        width: 50px;
+    }
 `
 
 

@@ -7,9 +7,8 @@ import { BASE_URL } from "../../constants/constants";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goBack, goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
-import { Header, Main, PageContainer, PageNav, PageTitle } from "../../style";
-import { LoadingGif } from "../HomePage/style";
-import { DetailsDiv, DetailsSection, ImgDiv, InfoDiv, MoveDiv, MoveItem, MoveTypeDiv, StatItem, StatsDiv, TypeDiv, TypeSpan } from "./style";
+import { Header, LoadingGif, Main, PageContainer, PageNav, PageTitle } from "../../style";
+import { ComputerImgDiv, ComputerTypeDiv, DetailsDiv, DetailsSection, ImgDiv, InfoDiv, MobileImgDiv, MobileTypeDiv, MoveDiv, MoveItem, MoveTypeDiv, StatItem, StatsDiv, TypeDiv, TypeSpan } from "./style";
 
 function DetailsPage() {
 
@@ -40,7 +39,7 @@ function DetailsPage() {
         setError(err)
       })
   }
-  
+
 
 
   // RENDER BUTTON
@@ -70,17 +69,27 @@ function DetailsPage() {
 
     let number
     if (pokemon.id < 10) {
-        number = `#00${pokemon.id}`
+      number = `#00${pokemon.id}`
     } else if (pokemon.id >= 10 && pokemon.id < 100) {
-        number = `#0${pokemon.id}`
+      number = `#0${pokemon.id}`
     } else {
-        number = `#${pokemon.id}`
-    }    
+      number = `#${pokemon.id}`
+    }
 
     return (
       <DetailsDiv key={pokemon.id}>
         <h1><span>{number}</span>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
         <InfoDiv>
+          <MobileImgDiv>
+            <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default']} alt={pokemon.name} />
+            <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['back_default']} alt={pokemon.name} />
+          </MobileImgDiv>
+          <MobileTypeDiv>
+              <div>
+                <TypeSpan key={pokemon.id} className={`${firstPokemonType}`}>{firstPokemonType}</TypeSpan>
+                {pokemon.types[1] && <TypeSpan className={`${secondPokemonType}`}>{secondPokemonType}</TypeSpan>}
+              </div>
+            </MobileTypeDiv>
           <StatsDiv>
             <h2>Estatísticas</h2>
             {pokemon.stats && pokemon.stats
@@ -93,17 +102,17 @@ function DetailsPage() {
                 )
               })}
           </StatsDiv>
-          <ImgDiv>
+          <ComputerImgDiv>
             <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default']} alt={pokemon.name} />
             <img src={pokemon.sprites.versions['generation-v']['black-white']['animated']['back_default']} alt={pokemon.name} />
-          </ImgDiv>
+          </ComputerImgDiv>
           <MoveTypeDiv>
-            <TypeDiv>
+            <ComputerTypeDiv>
               <div>
-                <TypeSpan className={`${firstPokemonType}`}>{firstPokemonType}</TypeSpan>
+                <TypeSpan key={pokemon.id} className={`${firstPokemonType}`}>{firstPokemonType}</TypeSpan>
                 {pokemon.types[1] && <TypeSpan className={`${secondPokemonType}`}>{secondPokemonType}</TypeSpan>}
               </div>
-            </TypeDiv>
+            </ComputerTypeDiv>
             <MoveDiv>
               <h2>Movimentos</h2>
               {pokemon.moves && pokemon.moves

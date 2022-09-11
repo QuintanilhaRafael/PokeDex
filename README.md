@@ -31,7 +31,7 @@ www.link.com.br
      - Botões no header para voltar para a última página e para adicionar na Pokedéx (caso tenha clicado no card na lista de Pokémons) ou remover da Pokédex (caso tenha clicado no card na Pokédex).
      
 - Funcionalidade extra:
-     - Ao recarregar a página (F5) os Pokémons que foram adicionados à Pokédex continuam lá e eles não aparecem na lista de Pokémons.
+     - Ao recarregar a página (F5) os Pokémons que foram adicionados na Pokédex continuam lá e eles não aparecem na lista de Pokémons.
      
 ### Imagens
 ![1](https://user-images.githubusercontent.com/102267210/189549802-048814da-6a2e-45d3-b068-633c6f73b041.png)

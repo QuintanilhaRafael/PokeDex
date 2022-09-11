@@ -1,14 +1,14 @@
 # POKEDEX
 
-###Nome dos integrantes 
+### Nome dos integrantes 
 - João Vitor Gomes Lara Resende.
 - Rafael Gonçalves Quintanilha Guimarães.
 - Nei Luis Duarte Tavares Junior.
 
-###Link do Surge 
+### Link do Surge 
 www.link.com.br
 
-###O que funciona
+### O que funciona
 - Navegação entre as páginas através de botões devidamente definidos (inclusive o logo no Header que leva para a lista de Pokémons).
 - Responsividade.
 
@@ -33,7 +33,7 @@ www.link.com.br
 - Funcionalidade extra:
      - Ao recarregar a página (F5) os Pokémons que foram adicionados à Pokédex continuam lá e eles não aparecem na lista de Pokémons.
      
-###Imagens
+### Imagens
 ![1](https://user-images.githubusercontent.com/102267210/189549802-048814da-6a2e-45d3-b068-633c6f73b041.png)
 ![2](https://user-images.githubusercontent.com/102267210/189549804-83fe679a-7e79-49ca-9aba-ff6eda2a19a1.png)
 ![3](https://user-images.githubusercontent.com/102267210/189549805-73c6df0d-f87a-4fab-a802-f2c700e3a74c.png)

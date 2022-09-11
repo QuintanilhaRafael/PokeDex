@@ -1,4 +1,4 @@
-# POKEDEX
+# POKÉDEX
 
 ### Nome dos integrantes 
 - João Vitor Gomes Lara Resende.

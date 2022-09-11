@@ -5,21 +5,20 @@ import Filters from "../../components/Filter/Filters";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
-import { CardsSection, Header, Main, PageContainer, PageNav, PageTitle } from "../../style";
+import { CardsSection, Header, LoadingGif, Main, PageContainer, PageNav, PageTitle } from "../../style";
 import Card from './../../components/Card/Card';
-import { LoadingGif } from "./style";
 import ReactPaginate from "react-paginate";
 
 function HomePage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress, pageNumber, setPageNumber } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber } = useContext(GlobalStateContext)
 
   // PAGINATION
 
   const cardsPerPage = 16
-  const pagesVisited = pageNumber * cardsPerPage
+  const pagesVisited = listPageNumber * cardsPerPage
 
   // RENDER POKEMONS
 
@@ -73,8 +72,12 @@ function HomePage() {
 
   const pageCount = Math.ceil(pokemonsList.length / cardsPerPage)
 
+  const pageNavigation = () => {
+    setListPageNumber(0)
+  }
+
   const changePage = ({ selected }) => {
-    setPageNumber(selected)
+    setListPageNumber(selected)
   }
 
   return (
@@ -82,7 +85,7 @@ function HomePage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => { goToHomePage(navigate); playAPress(); }} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playAPress(); pageNavigation() }} src={pokeball} alt="pokeball" />
           <h1>Lista de Pokémons</h1>
         </PageTitle>
         <PageNav>

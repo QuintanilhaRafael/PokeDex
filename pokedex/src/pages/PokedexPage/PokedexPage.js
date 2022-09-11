@@ -13,12 +13,12 @@ function PokedexPage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, playPcOff, playAPress, storedDex, pageNumber, setPageNumber } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, playPcOff, playAPress, storedDex, pokedexPageNumber, setPokedexPageNumber } = useContext(GlobalStateContext)
 
   // PAGINATION
 
   const cardsPerPage = 16
-  const pagesVisited = pageNumber * cardsPerPage
+  const pagesVisited = pokedexPageNumber * cardsPerPage
 
   // RENDER POKEDEX
 
@@ -72,7 +72,7 @@ function PokedexPage() {
   const pageCount = Math.ceil(pokedexList.length / cardsPerPage)
 
   const changePage = ({ selected }) => {
-    setPageNumber(selected)
+    setPokedexPageNumber(selected)
   }
 
   return (

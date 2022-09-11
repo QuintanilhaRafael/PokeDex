@@ -29,7 +29,8 @@ function GlobalState(props) {
     const storedDex = useRef([])
     const [detailButton, setDetailButton] = useState('')
     const [pokemonArray, setPokemonArray] = useState([])
-    const [pageNumber, setPageNumber] = useState(0)
+    const [listPageNumber, setListPageNumber] = useState(0)
+    const [pokedexPageNumber, setPokedexPageNumber] = useState(0)
 
     // Effects
 
@@ -649,8 +650,10 @@ function GlobalState(props) {
                     setPokemonArray,
                     storedDex,
                     reRenderAdd,
-                    pageNumber, 
-                    setPageNumber,
+                    listPageNumber, 
+                    setListPageNumber,
+                    pokedexPageNumber, 
+                    setPokedexPageNumber
                 }
             } >
             {props.children}

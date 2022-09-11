@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,13 @@ function PokedexPage() {
   const navigate = useNavigate();
 
   const { nameNumberQuery, typeQuery, selected, playPcOff, playAPress, storedDex, pokedexPageNumber, setPokedexPageNumber } = useContext(GlobalStateContext)
+
+  // Effects
+
+  useEffect(() => {
+    setPokedexPageNumber(0)
+  }, []
+  )
 
   // PAGINATION
 

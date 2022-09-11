@@ -26,6 +26,7 @@ function GlobalState(props) {
     const [isLoading, setIsLoading] = useState(undefined)
     const [error, setError] = useState(undefined)
     const didMount = useRef(false)
+    const didChange = useRef(false)
     const storedDex = useRef([])
     const [detailButton, setDetailButton] = useState('')
     const [pokemonArray, setPokemonArray] = useState([])
@@ -602,7 +603,7 @@ function GlobalState(props) {
     }
 
     if (storedDex.current) {
-        var found = []
+        var found 
         for (let i = 0; i < storedDex.current.length; i++) {
             found = pokemonsData.findIndex((pkm) => pkm.data.id === storedDex.current[i].data.id)
             if (found > -1) {
@@ -653,7 +654,8 @@ function GlobalState(props) {
                     listPageNumber, 
                     setListPageNumber,
                     pokedexPageNumber, 
-                    setPokedexPageNumber
+                    setPokedexPageNumber,
+                    didChange
                 }
             } >
             {props.children}

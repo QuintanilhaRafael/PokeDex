@@ -19,7 +19,7 @@ www.link.com.br
      - Botões do card: 
         - Adicionar: Adiciona o Pokémon na Pokedéx.
         - Detalhes: Abre a página de detalhes do Pokémon.
-- Pokedéx:
+- Pokédex:
      - Lista de cards com informações dos pokémons que foram adicionados na Pokédex.
      - Pagination (16 cards renderizados por página).
      - Botão no header para navegar de volta para a lista de Pokémons.
@@ -28,7 +28,7 @@ www.link.com.br
         - Detalhes: Abre a página de detalhes do Pokémon.
 - Página de detalhes:
      - Lista com as informações do Pokémon.
-     - Botões no header para voltar para a última página e para adicionar na Pokedéx (caso tenha clicado no card na lista de Pokémons) ou remover da Pokédex (caso tenha clicado no card na Pokédex).
+     - Botões no header para voltar para a última página e para adicionar na Pokédex (caso tenha clicado no card na lista de Pokémons) ou remover da Pokédex (caso tenha clicado no card na Pokédex).
      
 - Funcionalidade extra:
      - Ao recarregar a página (F5) os Pokémons que foram adicionados na Pokédex continuam lá e eles não aparecem na lista de Pokémons.

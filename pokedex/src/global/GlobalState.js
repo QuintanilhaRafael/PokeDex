@@ -559,9 +559,15 @@ function GlobalState(props) {
         setIsLoading(true);
         axios.all(res.map((pokemon) => axios.get(pokemon.url)))
             .then((response) => {
+                var obj
+                    var arr = []
+                    for (let i=0; i<response.length; i++) {
+                        obj = {data:{id:response[i].data.id, name:response[i].data.name, moves:response[i].data.moves, stats:response[i].data.stats,types:response[i].data.types ,sprites:{versions:{'generation-v':{'black-white':{animated:{front_default:response[i].data.sprites.versions['generation-v']['black-white']['animated']['front_default'], back_default:response[i].data.sprites.versions['generation-v']['black-white']['animated']['back_default']}}}}}}}
+                        arr.push(obj)
+                    }
                 setTimeout(() => {
                     setIsLoading(false)
-                    setPokemonsData(response)
+                    setPokemonsData(arr)
                 }, 1000)
             }).catch((err) => {
                 setIsLoading(false)
@@ -573,16 +579,20 @@ function GlobalState(props) {
     // BUTTONS FUNCTIONS
 
     const addPokedex = (id, pokemon) => {
-        const found = pokemonsData.findIndex((pkm) => pkm.data.id == id)
-        const newPokemonsData = [...pokemonsData]
-        newPokemonsData.splice(found, 1)
-        setPokemonsData(newPokemonsData)
-        const newPokedexArray = [...pokedexArray]
-        newPokedexArray.push(pokemon)
-        setPokedexArray(newPokedexArray)
-        didMount.current = true
-        playGotcha()
-
+            if (pokedexArray.length > 24) {
+                alert('Pokédex cheia, para adicionar outros pokémons, remova alguns da mesma.')
+            } else {
+                const found = pokemonsData.findIndex((pkm) => pkm.data.id == id)
+            const newPokemonsData = [...pokemonsData]
+            newPokemonsData.splice(found, 1)
+            setPokemonsData(newPokemonsData)
+            const newPokedexArray = [...pokedexArray]
+            newPokedexArray.push(pokemon)
+            setPokedexArray(newPokedexArray)
+            didMount.current = true
+            playGotcha()
+            }
+    
     }
 
     const removePokedex = (id) => {

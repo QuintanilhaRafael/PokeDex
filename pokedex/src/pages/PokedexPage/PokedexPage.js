@@ -76,7 +76,16 @@ function PokedexPage() {
       )
     })
 
-  const pageCount = Math.ceil(pokedexList.length / cardsPerPage)
+    
+
+    var pokedexLength
+    if (pokedexList === null) {
+      pokedexLength = 0
+    } else {
+      pokedexLength = pokedexList.length
+    }
+
+  const pageCount = Math.ceil(pokedexLength / cardsPerPage)
 
   const changePage = ({ selected }) => {
     setPokedexPageNumber(selected)

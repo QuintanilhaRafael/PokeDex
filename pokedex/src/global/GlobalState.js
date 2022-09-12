@@ -611,7 +611,7 @@ function GlobalState(props) {
         getPokemons()
     }
 
-    if (storedDex.current) {
+    if (storedDex.current != null) {
         var found
         for (let i = 0; i < storedDex.current.length; i++) {
             found = pokemonsData.findIndex((pkm) => pkm.data.id === storedDex.current[i].data.id)

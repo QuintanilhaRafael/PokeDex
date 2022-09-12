@@ -111,7 +111,7 @@ function PokedexPage() {
           {displayCards}
         </CardsSection>
 
-        {pokedexList.length !== 0
+        {pokedexLength !== 0
           &&
           <ReactPaginate
             previousLabel={<i className="fa fa-angle-left"></i>}

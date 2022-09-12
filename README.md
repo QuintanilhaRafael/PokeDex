@@ -32,6 +32,11 @@ https://damp-steam.surge.sh/
      
 - Funcionalidade extra:
      - Ao recarregar a página (F5) os Pokémons que foram adicionados na Pokédex continuam lá e eles não aparecem na lista de Pokémons.
+     - Filtros de nome ou número e tipo.
+     - Ordenação por nome ou número.
+     - Pagination gerenciam todos os 151 Pokémons, funcionando juntamente com os filtros.
+     - Sons ao clicar nos botões de navegação, nos botões de adicionar e remover da Pokédex.
+     - Sons exclusivos de cada Pokémon ao clicar no botão de detalhes.
      
 - Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage.
      

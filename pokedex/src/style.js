@@ -28,7 +28,7 @@ export const PageTitle = styled.div`
     text-shadow: 2px 2px 4px black;
     background-color: #ff1c1c;
     letter-spacing: 3px;
-    padding: 10px 50px;
+    padding: 0px 50px;
     
     img {
         width: 80px;
@@ -42,36 +42,39 @@ export const PageTitle = styled.div`
     h1 {
         width: 100%;
         margin-right: 80px;
+        margin-top: -15px;
         font-size: 2.4rem;
-        font-family: 'Pokemon', sans-serif;
+        font-family: 'Pokemon Solid', sans-serif;
         text-align: center;
     }
 
     @media (max-width: 710px) {
 
         img {
-            width: 60px;
+            width: 65px;
         }
         
         h1 {
             font-size: 2rem;
             margin: 0;
+            margin-top: -12px;
             text-align: end;
         }
     }   
 
     @media (max-width: 545px) {
 
-        padding: 5px 10px;
+        padding: 0px 10px;
         letter-spacing: 2px;
 
 
         img {
-            width: 35px;
+            width: 40px;
         }        
 
         h1 {
             font-size: 1.3rem;
+            margin-top: -10px;
         }
         
     }   

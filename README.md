@@ -33,6 +33,8 @@ https://damp-steam.surge.sh/
 - Funcionalidade extra:
      - Ao recarregar a página (F5) os Pokémons que foram adicionados na Pokédex continuam lá e eles não aparecem na lista de Pokémons.
      
+- Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage.
+     
 ### Imagens
 ![1](https://user-images.githubusercontent.com/102267210/189549802-048814da-6a2e-45d3-b068-633c6f73b041.png)
 ![2](https://user-images.githubusercontent.com/102267210/189549804-83fe679a-7e79-49ca-9aba-ff6eda2a19a1.png)

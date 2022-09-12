@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import pokemonFont from "./fonts/pokemon-solid.ttf"
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -6,7 +7,13 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+
+        @font-face {
+        font-family: 'Pokemon';
+        src: local('Pokemon'),
+        url(${pokemonFont}) format('truetype');
     }
+}
 `
 
 export const PageContainer = styled.div`
@@ -28,7 +35,7 @@ export const PageTitle = styled.div`
     text-shadow: 2px 2px 4px black;
     background-color: #ff1c1c;
     letter-spacing: 3px;
-    padding: 0px 50px;
+    padding: 10px 50px;
     
     img {
         width: 80px;
@@ -42,13 +49,15 @@ export const PageTitle = styled.div`
     h1 {
         width: 100%;
         margin-right: 80px;
-        margin-top: -15px;
         font-size: 2.4rem;
-        font-family: 'Pokemon Solid', sans-serif;
-        text-align: center;
+        text-align: center; 
+        font-family: "Pokemon", sans-serif;
     }
 
+
     @media (max-width: 710px) {
+
+        padding: 7px 50px;
 
         img {
             width: 65px;
@@ -57,14 +66,13 @@ export const PageTitle = styled.div`
         h1 {
             font-size: 2rem;
             margin: 0;
-            margin-top: -12px;
             text-align: end;
         }
     }   
 
     @media (max-width: 545px) {
 
-        padding: 0px 10px;
+        padding: 5px 10px;
         letter-spacing: 2px;
 
 
@@ -74,7 +82,7 @@ export const PageTitle = styled.div`
 
         h1 {
             font-size: 1.3rem;
-            margin-top: -10px;
+            margin-top: -15px;
         }
         
     }   

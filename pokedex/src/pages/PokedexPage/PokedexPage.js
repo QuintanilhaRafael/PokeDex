@@ -76,14 +76,13 @@ function PokedexPage() {
       )
     })
 
-    
 
-    var pokedexLength
-    if (pokedexList === null) {
-      pokedexLength = 0
-    } else {
-      pokedexLength = pokedexList.length
-    }
+  var pokedexLength
+  if (pokedexList === null) {
+    pokedexLength = 0
+  } else {
+    pokedexLength = pokedexList.length
+  }
 
   const pageCount = Math.ceil(pokedexLength / cardsPerPage)
 
@@ -112,17 +111,19 @@ function PokedexPage() {
           {displayCards}
         </CardsSection>
 
-        <ReactPaginate
-          previousLabel={<i className="fa fa-angle-left"></i>}
-          nextLabel={<i className="fa fa-angle-right"></i>}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"paginationButtons"}
-          previousLinkClassName={"previousButton"}
-          nextLinkClassName={"nextButton"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
-        />
+        {pokedexList.length !== 0
+          &&
+          <ReactPaginate
+            previousLabel={<i className="fa fa-angle-left"></i>}
+            nextLabel={<i className="fa fa-angle-right"></i>}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationButtons"}
+            previousLinkClassName={"previousButton"}
+            nextLinkClassName={"nextButton"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+          />}
 
       </Main>
 

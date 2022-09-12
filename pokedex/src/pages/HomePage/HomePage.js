@@ -104,17 +104,21 @@ function HomePage() {
           {!isLoading && pokemonsData && displayCards}
           {!isLoading && !pokemonsData && error}
         </CardsSection>
-        <ReactPaginate
-          previousLabel={<i class="fa fa-angle-left"></i>}
-          nextLabel={<i class="fa fa-angle-right"></i>}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"paginationButtons"}
-          previousLinkClassName={"previousButton"}
-          nextLinkClassName={"nextButton"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
-        />
+
+        {pokemonsList.length !== 0
+          &&
+          <ReactPaginate
+            previousLabel={<i class="fa fa-angle-left"></i>}
+            nextLabel={<i class="fa fa-angle-right"></i>}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationButtons"}
+            previousLinkClassName={"previousButton"}
+            nextLinkClassName={"nextButton"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+          />}
+
       </Main>
 
     </PageContainer>

@@ -58,7 +58,7 @@ function GlobalState(props) {
     }, [pokedexArray]
     )
 
-    
+
     // SOUNDS
 
     const playGotcha = () => {
@@ -560,11 +560,11 @@ function GlobalState(props) {
         axios.all(res.map((pokemon) => axios.get(pokemon.url)))
             .then((response) => {
                 var obj
-                    var arr = []
-                    for (let i=0; i<response.length; i++) {
-                        obj = {data:{id:response[i].data.id, name:response[i].data.name, moves:response[i].data.moves, stats:response[i].data.stats,types:response[i].data.types ,sprites:{versions:{'generation-v':{'black-white':{animated:{front_default:response[i].data.sprites.versions['generation-v']['black-white']['animated']['front_default'], back_default:response[i].data.sprites.versions['generation-v']['black-white']['animated']['back_default']}}}}}}}
-                        arr.push(obj)
-                    }
+                var arr = []
+                for (let i = 0; i < response.length; i++) {
+                    obj = { data: { id: response[i].data.id, name: response[i].data.name, moves: response[i].data.moves, stats: response[i].data.stats, types: response[i].data.types, sprites: { versions: { 'generation-v': { 'black-white': { animated: { front_default: response[i].data.sprites.versions['generation-v']['black-white']['animated']['front_default'], back_default: response[i].data.sprites.versions['generation-v']['black-white']['animated']['back_default'] } } } } } } }
+                    arr.push(obj)
+                }
                 setTimeout(() => {
                     setIsLoading(false)
                     setPokemonsData(arr)
@@ -579,10 +579,10 @@ function GlobalState(props) {
     // BUTTONS FUNCTIONS
 
     const addPokedex = (id, pokemon) => {
-            if (pokedexArray.length > 24) {
-                alert('Pokédex cheia, para adicionar outros pokémons, remova alguns da mesma.')
-            } else {
-                const found = pokemonsData.findIndex((pkm) => pkm.data.id == id)
+        if (pokedexArray.length > 24) {
+            alert('Pokédex cheia, para adicionar outros pokémons, remova alguns da mesma.')
+        } else {
+            const found = pokemonsData.findIndex((pkm) => pkm.data.id == id)
             const newPokemonsData = [...pokemonsData]
             newPokemonsData.splice(found, 1)
             setPokemonsData(newPokemonsData)
@@ -591,8 +591,8 @@ function GlobalState(props) {
             setPokedexArray(newPokedexArray)
             didMount.current = true
             playGotcha()
-            }
-    
+        }
+
     }
 
     const removePokedex = (id) => {
@@ -604,7 +604,6 @@ function GlobalState(props) {
         playRun()
         storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
         getPokemons()
-
     }
 
     const reRenderAdd = () => {
@@ -613,7 +612,7 @@ function GlobalState(props) {
     }
 
     if (storedDex.current) {
-        var found 
+        var found
         for (let i = 0; i < storedDex.current.length; i++) {
             found = pokemonsData.findIndex((pkm) => pkm.data.id === storedDex.current[i].data.id)
             if (found > -1) {
@@ -661,9 +660,9 @@ function GlobalState(props) {
                     setPokemonArray,
                     storedDex,
                     reRenderAdd,
-                    listPageNumber, 
+                    listPageNumber,
                     setListPageNumber,
-                    pokedexPageNumber, 
+                    pokedexPageNumber,
                     setPokedexPageNumber,
                     didChange
                 }

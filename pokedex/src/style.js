@@ -30,7 +30,6 @@ export const Header = styled.header`
 
 export const PageTitle = styled.div`
     display: flex;
-    align-items: center;
     color: white;
     text-shadow: 2px 2px 4px black;
     background-color: #ff1c1c;
@@ -49,7 +48,7 @@ export const PageTitle = styled.div`
     h1 {
         width: 100%;
         margin-right: 80px;
-        font-size: 2.4rem;
+        font-size: 2.3rem;
         text-align: center; 
         font-family: "Pokemon", sans-serif;
     }
@@ -64,7 +63,7 @@ export const PageTitle = styled.div`
         }
         
         h1 {
-            font-size: 2rem;
+            font-size: 1.85rem;
             margin: 0;
             text-align: end;
         }
@@ -82,7 +81,6 @@ export const PageTitle = styled.div`
 
         h1 {
             font-size: 1.3rem;
-            margin-top: -15px;
         }
         
     }   

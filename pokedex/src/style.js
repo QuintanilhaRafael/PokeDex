@@ -199,6 +199,19 @@ export const LoadingGif = styled.img`
     }
 `
 
+export const GotEmAll = styled.div`
+display: flex;
+flex-direction: column;
+align-self: center;
+width: 40vw;
+
+@media (max-width: 860px) {
+        width: auto;
+    }
+
+
+`
+
 
 
 

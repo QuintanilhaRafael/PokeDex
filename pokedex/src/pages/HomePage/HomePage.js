@@ -8,6 +8,8 @@ import { goToHomePage, goToPokedexPage } from "../../routes/Coordinator";
 import { CardsSection, Header, LoadingGif, Main, PageContainer, PageNav, PageTitle } from "../../style";
 import Card from './../../components/Card/Card';
 import ReactPaginate from "react-paginate";
+import ReactPlayer from 'react-player'
+import { GotEmAll } from './../../style';
 
 function HomePage() {
 
@@ -76,8 +78,9 @@ function HomePage() {
       )
     })
 
+
     if (displayCards.length === 0) {
-      displayCards = <h1>You Got 'Em All !</h1>
+      displayCards = <GotEmAll><h1>You Got 'Em All !</h1><h1>(Desmuta o som!!!)</h1> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE'/></GotEmAll>
     }
 
 

@@ -15,7 +15,7 @@ function HomePage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber, playCompletedDex, storedDex } = useContext(GlobalStateContext)
 
   // Effects
 
@@ -78,16 +78,26 @@ function HomePage() {
       )
     })
 
-
-    if (displayCards.length === 0) {
-      displayCards = <GotEmAll><h1>You Got 'Em All!</h1><h1>(Desmuta o som!!!)</h1> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE'/></GotEmAll>
-    }
-
+    //pagination
 
   const pageCount = Math.ceil(pokemonsList.length / cardsPerPage)
 
   const changePage = ({ selected }) => {
     setListPageNumber(selected)
+  }
+
+  // Pokedex completed changes
+
+  const pkdexCompleted = () => {
+    if (storedDex.current.length < 151) {
+      playPcOn();
+    } else {
+      playCompletedDex()
+    }
+  }  
+
+  if (displayCards.length === 0) {
+    displayCards = <GotEmAll><h1>You Got 'Em All!</h1><h1>(Desmuta o som!!!)</h1> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE'/></GotEmAll>
   }
 
   return (
@@ -99,7 +109,7 @@ function HomePage() {
           <h1>Lista de Pokémons</h1>
         </PageTitle>
         <PageNav>
-          <button onClick={() => { goToPokedexPage(navigate); playPcOn(); }}>Ir para Pokédex</button>
+          <button onClick={() => { goToPokedexPage(navigate); pkdexCompleted()}}>Ir para Pokédex</button>
         </PageNav>
       </Header>
 

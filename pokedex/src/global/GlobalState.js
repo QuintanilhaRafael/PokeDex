@@ -611,13 +611,36 @@ function GlobalState(props) {
         getPokemons()
     }
 
-    const catchOrReleaseAllOfThem = () => {
-        localStorage.clear();
-        getPokemons()
-        storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
-        localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
-        storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
-    }
+    // var releaseAllOfThem = () => {
+    //         localStorage.clear()
+    //         getPokemons()
+    //         storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
+    
+    // }
+
+    // var catchAllOfThem = () => {
+    //     localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
+    //     storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
+
+    // }
+
+    var catchAllOfThem
+
+    if (storedDex.current === null) {
+        catchAllOfThem = () => {
+                 localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
+                 storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
+                 getPokemons()
+                 console.log('null')
+             }
+        } else {
+                catchAllOfThem = () => {
+                localStorage.clear()
+                getPokemons()
+                storedDex.current = JSON.parse(localStorage.getItem('pokedex'))  
+                console.log('naonull')
+             } 
+        }
 
     if (storedDex.current != null) {
         var found
@@ -676,7 +699,7 @@ function GlobalState(props) {
                     pokedexPageNumber,
                     setPokedexPageNumber,
                     playCompletedDex,
-                    catchOrReleaseAllOfThem
+                    catchAllOfThem
                 }
             } >
             {props.children}

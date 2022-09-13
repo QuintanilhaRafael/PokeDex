@@ -20,7 +20,8 @@ function GlobalState(props) {
 
     const [nameNumberQuery, setNameNumberQuery] = useState('')
     const [typeQuery, setTypeQuery] = useState('')
-    const [selected, setSelected] = useState('number')
+    const [selectedHome, setSelectedHome] = useState('number')
+    const [selectedPokedex, setSelectedPokedex] = useState('number')
     const [pokedexArray, setPokedexArray] = useState([])
     const [pokemonDetails, setPokemonDetails] = useState([])
     const [pokemonsData, setPokemonsData] = useState([])
@@ -583,15 +584,15 @@ function GlobalState(props) {
     // BUTTONS FUNCTIONS
 
     const addPokedex = (id, pokemon) => {
-            const found = pokemonsData.findIndex((pkm) => pkm.data.id == id)
-            const newPokemonsData = [...pokemonsData]
-            newPokemonsData.splice(found, 1)
-            setPokemonsData(newPokemonsData)
-            const newPokedexArray = [...pokedexArray]
-            newPokedexArray.push(pokemon)
-            setPokedexArray(newPokedexArray)
-            didMount.current = true
-            playGotcha()
+        const found = pokemonsData.findIndex((pkm) => pkm.data.id == id)
+        const newPokemonsData = [...pokemonsData]
+        newPokemonsData.splice(found, 1)
+        setPokemonsData(newPokemonsData)
+        const newPokedexArray = [...pokedexArray]
+        newPokedexArray.push(pokemon)
+        setPokedexArray(newPokedexArray)
+        didMount.current = true
+        playGotcha()
 
     }
 
@@ -611,25 +612,33 @@ function GlobalState(props) {
         getPokemons()
     }
 
+    var storedDexLength
+    if (storedDex.current === null) {
+      storedDexLength = 0
+    } else {
+      storedDexLength = storedDex.current.length
+    }
+  
+
     var catchOrReleaseAllOfThem
 
-    if (storedDex.current === null) {
+    if (storedDex.current === null || storedDexLength === 0) {
         catchOrReleaseAllOfThem = () => {
-                 localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
-                 storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
-                 getPokemons()
-                 console.log('null')
-             }
-        } else {
-            catchOrReleaseAllOfThem = () => {
-                localStorage.clear()
-                getPokemons()
-                storedDex.current = JSON.parse(localStorage.getItem('pokedex'))  
-                console.log('naonull')
-             } 
+            localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
+            storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
+            getPokemons()
+            console.log('null')
         }
+    } else {
+        catchOrReleaseAllOfThem = () => {
+            localStorage.clear()
+            getPokemons()
+            storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
+            console.log('naonull')
+        }
+    }
 
-    if (storedDex.current != null) {
+    if (storedDex.current != null || storedDexLength > 0) {
         var found
         var newPokemonsData
         var pokemonsDataRef = pokemonsData
@@ -645,8 +654,6 @@ function GlobalState(props) {
     }
 
 
-
-
     return (
         <GlobalStateContext.Provider
             value={
@@ -655,8 +662,10 @@ function GlobalState(props) {
                     setNameNumberQuery,
                     typeQuery,
                     setTypeQuery,
-                    selected,
-                    setSelected,
+                    selectedHome,
+                    setSelectedHome,
+                    selectedPokedex,
+                    setSelectedPokedex,
                     isLoading,
                     setIsLoading,
                     error,

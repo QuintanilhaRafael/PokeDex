@@ -198,21 +198,71 @@ export const LoadingGif = styled.img`
 `
 
 export const GotEmAll = styled.div`
-display: flex;
-flex-direction: column;
-align-self: center;
-width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 40vw;
+    margin-top: 20px;
 
-h1 {
-    margin-bottom: 1rem;
-    font-weight: 900;
-}
+    .message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        align-self: center;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
     
 
-@media (max-width: 860px) {
+    @media (max-width: 860px) {
         width: auto;
 
     }
+
+    @media (max-width: 710px) {
+        
+        h2 {
+            font-size: 1.5rem;
+        }
+    }   
+
+    @media (max-width: 545px) {
+
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+    
+`
+
+export const EmptyPokedex = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 65vh;
+    justify-content: center;
+
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    @media (max-width: 710px) {
+        
+        h2 {
+            font-size: 1.5rem;
+        }
+    }   
+
+    @media (max-width: 545px) {
+
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+    
 `
 
 

@@ -7,13 +7,13 @@ import Filters from "../../components/Filter/Filters";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import pokeball from "../../img/pokeball.svg"
 import { goToHomePage } from "../../routes/Coordinator";
-import { CardsSection, Header, Main, PageNav, PageTitle } from "../../style";
+import { CardsSection, EmptyPokedex, Header, Main, PageNav, PageTitle } from "../../style";
 
 function PokedexPage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, playPcOff, playAPress, storedDex, pokedexPageNumber, setPokedexPageNumber, catchOrReleaseAllOfThem } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selectedPokedex, setSelectedPokedex, playPcOff, storedDex, pokedexPageNumber, setPokedexPageNumber, pokemonsData } = useContext(GlobalStateContext)
 
   // Effects
 
@@ -51,7 +51,7 @@ function PokedexPage() {
       return pokemonType.toLowerCase().includes(typeQuery.toLowerCase())
     })
     .sort((pokemon1, pokemon2) => {
-      switch (selected) {
+      switch (selectedPokedex) {
         case 'name':
           return pokemon1.data.name.localeCompare(pokemon2.data.name)
         default:
@@ -95,7 +95,7 @@ function PokedexPage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => { goToHomePage(navigate); playPcOff();}} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playPcOff(); }} src={pokeball} alt="pokeball" />
           <h1>Pokédex</h1>
         </PageTitle>
         <PageNav>
@@ -105,11 +105,15 @@ function PokedexPage() {
 
       <Main>
 
-        <Filters />
+        {pokemonsData.length === 151 ?
+          <EmptyPokedex><h2>A Pokédex está vazia!</h2><h2>Vá capturar algum Pokémon!</h2></EmptyPokedex> :
+          <>
+            <Filters selected={selectedPokedex} setSelected={setSelectedPokedex} />
+            <CardsSection>
+              {displayCards}
+            </CardsSection>
+          </>}
 
-        <CardsSection>
-          {displayCards}
-        </CardsSection>
 
         {pokedexLength !== 0
           &&

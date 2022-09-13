@@ -15,7 +15,7 @@ function HomePage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selected, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber, playCompletedDex, storedDex, catchOrReleaseAllOfThem } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selectedHome, setSelectedHome, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber, playCompletedDex, storedDex, catchOrReleaseAllOfThem } = useContext(GlobalStateContext)
 
   // Effects
 
@@ -53,7 +53,7 @@ function HomePage() {
       return pokemonType.toLowerCase().includes(typeQuery.toLowerCase())
     })
     .sort((pokemon1, pokemon2) => {
-      switch (selected) {
+      switch (selectedHome) {
         case 'name':
           return pokemon1.data.name.localeCompare(pokemon2.data.name)
         default:
@@ -78,7 +78,7 @@ function HomePage() {
       )
     })
 
-    //pagination
+  //pagination
 
   const pageCount = Math.ceil(pokemonsList.length / cardsPerPage)
 
@@ -86,18 +86,26 @@ function HomePage() {
     setListPageNumber(selected)
   }
 
+
+  var storedDexLength
+  if (storedDex.current === null) {
+    storedDexLength = 0
+  } else {
+    storedDexLength = storedDex.current.length
+  }
+
   // Pokedex completed changes
 
   const pkdexCompleted = () => {
-    if (storedDex.current.length < 151) {
+    if (storedDexLength < 151) {
       playPcOn();
     } else {
       playCompletedDex()
     }
-  }  
+  }
 
-  if (displayCards.length === 0) {
-    displayCards = <GotEmAll><h1>You Got 'Em All!</h1><h1>(Desmuta o som!!!)</h1> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE'/></GotEmAll>
+  if (storedDexLength === 151 ) {
+    displayCards = <GotEmAll><div className="message"><h2>You Got 'Em All!</h2><h2>(Desmuta o som!!!)</h2></div> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE' /></GotEmAll>
   }
 
   return (
@@ -105,17 +113,17 @@ function HomePage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => { goToHomePage(navigate); playAPress(); catchOrReleaseAllOfThem()}} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playAPress(); catchOrReleaseAllOfThem() }} src={pokeball} alt="pokeball" />
           <h1>Lista de Pokémons</h1>
         </PageTitle>
         <PageNav>
-          <button onClick={() => { goToPokedexPage(navigate); pkdexCompleted()}}>Ir para Pokédex</button>
+          <button onClick={() => { goToPokedexPage(navigate); pkdexCompleted() }}>Ir para Pokédex</button>
         </PageNav>
       </Header>
 
       <Main>
 
-        <Filters />
+        {storedDexLength === 151 ? <></> : <Filters selected={selectedHome} setSelected={setSelectedHome} />}
         <CardsSection>
           {isLoading && <LoadingGif src="https://thumbs.gfycat.com/DampSpanishCleanerwrasse-max-1mb.gif" />}
           {!isLoading && pokemonsData && displayCards}

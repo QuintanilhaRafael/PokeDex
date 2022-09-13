@@ -6,7 +6,7 @@
 - Nei Luis Duarte Tavares Junior.
 
 ### Link do Surge 
-[loving-time.surge.sh](https://loving-time.surge.sh/)
+https://smart-bread.surge.sh/
 
 ### O que funciona
 - Navegação entre as páginas através de botões devidamente definidos (inclusive o logo no Header que leva para a lista de Pokémons).
@@ -38,6 +38,7 @@
      - Sons ao clicar nos botões de navegação, nos botões de adicionar e remover da Pokédex.
      - Sons exclusivos de cada Pokémon ao clicar no botão de detalhes.
      - Vídeo 'RapPokémon' ao pegar todos eles + música diferente ao entrar na pokédex ! rs
+     - Adicionada função toggle na pokebola do header que coloca ou remove todos os pokemons na pokedex na mesma hora (Para que o usuário possa testar as funcionalidades da Dex cheia.)
      
 - Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage - *resolvido (render-local-fix).
      

@@ -611,30 +611,17 @@ function GlobalState(props) {
         getPokemons()
     }
 
-    // var releaseAllOfThem = () => {
-    //         localStorage.clear()
-    //         getPokemons()
-    //         storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
-    
-    // }
-
-    // var catchAllOfThem = () => {
-    //     localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
-    //     storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
-
-    // }
-
-    var catchAllOfThem
+    var catchOrReleaseAllOfThem
 
     if (storedDex.current === null) {
-        catchAllOfThem = () => {
+        catchOrReleaseAllOfThem = () => {
                  localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
                  storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
                  getPokemons()
                  console.log('null')
              }
         } else {
-                catchAllOfThem = () => {
+            catchOrReleaseAllOfThem = () => {
                 localStorage.clear()
                 getPokemons()
                 storedDex.current = JSON.parse(localStorage.getItem('pokedex'))  
@@ -699,7 +686,7 @@ function GlobalState(props) {
                     pokedexPageNumber,
                     setPokedexPageNumber,
                     playCompletedDex,
-                    catchAllOfThem
+                    catchOrReleaseAllOfThem
                 }
             } >
             {props.children}

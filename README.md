@@ -6,7 +6,7 @@
 - Nei Luis Duarte Tavares Junior.
 
 ### Link do Surge 
-https://thinkable-pocket.surge.sh/
+https://abiding-fly.surge.sh/
 
 ### O que funciona
 - Navegação entre as páginas através de botões devidamente definidos (inclusive o logo no Header que leva para a lista de Pokémons).
@@ -37,6 +37,7 @@ https://thinkable-pocket.surge.sh/
      - Pagination gerenciam todos os 151 Pokémons, funcionando juntamente com os filtros.
      - Sons ao clicar nos botões de navegação, nos botões de adicionar e remover da Pokédex.
      - Sons exclusivos de cada Pokémon ao clicar no botão de detalhes.
+     - Vídeo ao pegar todos eles ! rs
      
 - Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage - *resolvido (render-local-fix).
      

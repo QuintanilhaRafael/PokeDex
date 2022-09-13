@@ -611,6 +611,14 @@ function GlobalState(props) {
         getPokemons()
     }
 
+    const catchOrReleaseAllOfThem = () => {
+        localStorage.clear();
+        getPokemons()
+        storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
+        localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
+        storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
+    }
+
     if (storedDex.current != null) {
         var found
         var newPokemonsData
@@ -667,7 +675,8 @@ function GlobalState(props) {
                     setListPageNumber,
                     pokedexPageNumber,
                     setPokedexPageNumber,
-                    playCompletedDex
+                    playCompletedDex,
+                    catchOrReleaseAllOfThem
                 }
             } >
             {props.children}

@@ -184,8 +184,6 @@ export const CardsSection = styled.div`
 
     h1 {
         align-self: center;
-        font-family: "Pokemon", sans-serif;
-        letter-spacing: 3px;
     }
     
 `
@@ -205,13 +203,17 @@ flex-direction: column;
 align-self: center;
 width: 40vw;
 
+h1 {
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+    
+
 @media (max-width: 860px) {
         width: auto;
+
     }
-
-
 `
-
 
 
 

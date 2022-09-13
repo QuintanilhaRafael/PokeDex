@@ -95,7 +95,7 @@ function PokedexPage() {
 
       <Header>
         <PageTitle>
-          <img onClick={() => { goToHomePage(navigate); playPcOff(); catchOrReleaseAllOfThem()}} src={pokeball} alt="pokeball" />
+          <img onClick={() => { goToHomePage(navigate); playPcOff();}} src={pokeball} alt="pokeball" />
           <h1>Pokédex</h1>
         </PageTitle>
         <PageNav>

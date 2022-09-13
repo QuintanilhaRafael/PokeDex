@@ -30,15 +30,16 @@ https://hungry-parcel.surge.sh/
      - Lista com as informações do Pokémon.
      - Botões no header para voltar para a última página e para adicionar na Pokédex (caso tenha clicado no card na lista de Pokémons) ou remover da Pokédex (caso tenha clicado no card na Pokédex).
      
-- Funcionalidade extra:
+- Funcionalidades extras:
      - Ao recarregar a página (F5) os Pokémons que foram adicionados na Pokédex continuam lá e eles não aparecem na lista de Pokémons.
      - Filtros de nome ou número e tipo.
      - Ordenação por nome ou número.
      - Pagination gerenciam todos os 151 Pokémons, funcionando juntamente com os filtros.
      - Sons ao clicar nos botões de navegação, nos botões de adicionar e remover da Pokédex.
      - Sons exclusivos de cada Pokémon ao clicar no botão de detalhes.
-     - Vídeo 'RapPokémon' ao pegar todos eles + música diferente ao entrar na pokédex ! rs
-     - Adicionada função toggle: Se alguns pokemon estiver na dex, o botão remove todos eles, do contrário, ele adiciona todos a ela. (Para que o usuário possa testar as funcionalidades da Dex cheia.)
+     - Vídeo 'RapPokémon' ao pegar todos eles + música diferente ao entrar na pokédex! rs
+     - Uma mensagem é renderizada quando a Pokédex está vazia.
+     - Adicionada função toggle ao clicar no logo: Se alguns Pokémons estiverem na dex, o botão remove todos eles, do contrário, ele adiciona todos nela. (Para que o usuário possa testar as funcionalidades da Dex cheia.)
      
 - Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage - *resolvido (render-local-fix).
      

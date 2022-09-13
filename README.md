@@ -37,7 +37,7 @@
      - Pagination gerenciam todos os 151 Pokémons, funcionando juntamente com os filtros.
      - Sons ao clicar nos botões de navegação, nos botões de adicionar e remover da Pokédex.
      - Sons exclusivos de cada Pokémon ao clicar no botão de detalhes.
-     - Vídeo ao pegar todos eles ! rs
+     - Vídeo 'RapPokémon' ao pegar todos eles + música diferente ao entrar na pokédex ! rs
      
 - Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage - *resolvido (render-local-fix).
      

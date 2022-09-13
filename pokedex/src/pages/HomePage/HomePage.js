@@ -80,7 +80,7 @@ function HomePage() {
 
 
     if (displayCards.length === 0) {
-      displayCards = <GotEmAll><h1>You Got 'Em All !</h1><h1>(Desmuta o som!!!)</h1> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE'/></GotEmAll>
+      displayCards = <GotEmAll><h1>You Got 'Em All!</h1><h1>(Desmuta o som!!!)</h1> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE'/></GotEmAll>
     }
 
 

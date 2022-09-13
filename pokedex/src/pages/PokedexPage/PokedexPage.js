@@ -106,7 +106,7 @@ function PokedexPage() {
       <Main>
 
         {pokemonsData.length === 151 ?
-          <EmptyPokedex><h2>A Pokédex está vazia!</h2><h2>Vá capturar algum Pokémon!</h2></EmptyPokedex> :
+          <EmptyPokedex><h2>A Pokédex está vazia!</h2><h2>Capture algum Pokémon!</h2></EmptyPokedex> :
           <>
             <Filters selected={selectedPokedex} setSelected={setSelectedPokedex} />
             <CardsSection>

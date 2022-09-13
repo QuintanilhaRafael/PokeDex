@@ -622,7 +622,7 @@ function GlobalState(props) {
 
     var catchOrReleaseAllOfThem
 
-    if (storedDex.current === null || storedDexLength === 0) {
+    if (storedDex.current === null) {
         catchOrReleaseAllOfThem = () => {
             localStorage.setItem('pokedex', JSON.stringify(pokemonsData))
             storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
@@ -638,7 +638,7 @@ function GlobalState(props) {
         }
     }
 
-    if (storedDex.current != null || storedDexLength > 0) {
+    if (storedDex.current != null) {
         var found
         var newPokemonsData
         var pokemonsDataRef = pokemonsData

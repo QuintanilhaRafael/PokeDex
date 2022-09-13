@@ -41,7 +41,6 @@ function DetailsPage() {
   }
 
 
-
   // RENDER BUTTON
 
   let buttonRender;

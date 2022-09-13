@@ -59,7 +59,7 @@ function HomePage() {
       }
     })
 
-  const displayCards = pokemonsList && pokemonsList
+  var displayCards = pokemonsList && pokemonsList
     .slice(pagesVisited, pagesVisited + cardsPerPage)
     .map(pokemon => {
       return (
@@ -75,6 +75,10 @@ function HomePage() {
         />
       )
     })
+
+    if (displayCards.length === 0) {
+      displayCards = <h1>You Got 'Em All !</h1>
+    }
 
 
   const pageCount = Math.ceil(pokemonsList.length / cardsPerPage)

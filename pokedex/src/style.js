@@ -181,6 +181,12 @@ export const CardsSection = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     min-height: 65vh;
+
+    h1 {
+        align-self: center;
+        font-family: "Pokemon", sans-serif;
+        letter-spacing: 3px;
+    }
     
 `
 
@@ -192,5 +198,8 @@ export const LoadingGif = styled.img`
         width: 50px;
     }
 `
+
+
+
 
 

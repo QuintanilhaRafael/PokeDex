@@ -6,7 +6,7 @@
 - Nei Luis Duarte Tavares Junior.
 
 ### Link do Surge 
-http://elite-spot.surge.sh/
+https://thinkable-pocket.surge.sh/
 
 ### O que funciona
 - Navegação entre as páginas através de botões devidamente definidos (inclusive o logo no Header que leva para a lista de Pokémons).
@@ -38,7 +38,7 @@ http://elite-spot.surge.sh/
      - Sons ao clicar nos botões de navegação, nos botões de adicionar e remover da Pokédex.
      - Sons exclusivos de cada Pokémon ao clicar no botão de detalhes.
      
-- Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage.
+- Observação: O limite de Pokémons na Pokédex é de 25 devido ao espaço limitado do localStorage - *resolvido (render-local-fix).
      
 ### Imagens
 ![1](https://user-images.githubusercontent.com/102267210/189549802-048814da-6a2e-45d3-b068-633c6f73b041.png)

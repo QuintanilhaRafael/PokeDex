@@ -33,6 +33,7 @@ function GlobalState(props) {
     const [pokemonArray, setPokemonArray] = useState([])
     const [listPageNumber, setListPageNumber] = useState(0)
     const [pokedexPageNumber, setPokedexPageNumber] = useState(0)
+    const didChange = useRef(false)
 
     // Effects
 
@@ -592,6 +593,7 @@ function GlobalState(props) {
         newPokedexArray.push(pokemon)
         setPokedexArray(newPokedexArray)
         didMount.current = true
+        didChange.current = true
         playGotcha()
 
     }
@@ -610,13 +612,6 @@ function GlobalState(props) {
     const reRenderAdd = () => {
         storedDex.current = JSON.parse(localStorage.getItem('pokedex'))
         getPokemons()
-    }
-
-    var storedDexLength
-    if (storedDex.current === null) {
-      storedDexLength = 0
-    } else {
-      storedDexLength = storedDex.current.length
     }
   
 
@@ -695,7 +690,8 @@ function GlobalState(props) {
                     pokedexPageNumber,
                     setPokedexPageNumber,
                     playCompletedDex,
-                    catchOrReleaseAllOfThem
+                    catchOrReleaseAllOfThem,
+                    didChange
                 }
             } >
             {props.children}

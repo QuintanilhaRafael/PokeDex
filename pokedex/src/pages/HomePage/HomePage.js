@@ -15,12 +15,17 @@ function HomePage() {
 
   const navigate = useNavigate();
 
-  const { nameNumberQuery, typeQuery, selectedHome, setSelectedHome, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber, playCompletedDex, storedDex, catchOrReleaseAllOfThem } = useContext(GlobalStateContext)
+  const { nameNumberQuery, typeQuery, selectedHome, setSelectedHome, isLoading, error, pokemonsData, playPcOn, playAPress, listPageNumber, setListPageNumber, playCompletedDex, storedDex, catchOrReleaseAllOfThem, didChange } = useContext(GlobalStateContext)
 
   // Effects
 
   useEffect(() => {
     setListPageNumber(0)
+  }, []
+  )
+
+  useEffect(() => {
+    
   }, []
   )
 
@@ -94,6 +99,7 @@ function HomePage() {
     storedDexLength = storedDex.current.length
   }
 
+
   // Pokedex completed changes
 
   const pkdexCompleted = () => {
@@ -104,7 +110,7 @@ function HomePage() {
     }
   }
 
-  if (storedDexLength === 151 ) {
+  if (displayCards.length === 0 && nameNumberQuery === "" && typeQuery === "") {
     displayCards = <GotEmAll><div className="message"><h2>You Got 'Em All!</h2><h2>(Desmuta o som!!!)</h2></div> <ReactPlayer width='auto' playing={true} muted={true} controls url='https://www.youtube.com/watch?v=atqKPe8lOpE' /></GotEmAll>
   }
 
@@ -123,7 +129,7 @@ function HomePage() {
 
       <Main>
 
-        {storedDexLength === 151 ? <></> : <Filters selected={selectedHome} setSelected={setSelectedHome} />}
+        {pokemonsData.length !== 0 && <Filters selected={selectedHome} setSelected={setSelectedHome} />}
         <CardsSection>
           {isLoading && <LoadingGif src="https://thumbs.gfycat.com/DampSpanishCleanerwrasse-max-1mb.gif" />}
           {!isLoading && pokemonsData && displayCards}

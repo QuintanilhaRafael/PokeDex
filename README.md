@@ -1,8 +1,8 @@
 # POKÉDEX
 
 ### Nome dos integrantes 
-- João Vitor Gomes Lara Resende.
 - Rafael Gonçalves Quintanilha Guimarães.
+- João Vitor Gomes Lara Resende.
 - Nei Luis Duarte Tavares Junior.
 
 ### Link do Surge 
